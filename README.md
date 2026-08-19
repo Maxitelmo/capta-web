@@ -6,7 +6,7 @@ de Córdoba**, desarrollada en la Dirección de Investigación Operativa y aprob
 Resolución FG N° 7/26.
 
 Está pensado como material de capacitación para operadores y como difusión de uso
-abierto del sistema.
+del sistema.
 
 ## Contenido del sitio
 
@@ -21,19 +21,6 @@ Las tres páginas son **autocontenidas** (CSS e imágenes embebidas): funcionan 
 conexión y no dependen de servicios externos. Comparten una capa común de tokens de
 diseño (color, tipografía y espaciado) mantenida idéntica en los tres archivos.
 
-## Ver el sitio
-
-- **En línea:** una vez publicado con GitHub Pages, queda accesible desde la URL del
-  repositorio (ver sección *Settings → Pages* del repo).
-- **Local:** abrir `index.html` directamente en cualquier navegador moderno.
-
-## Publicar con GitHub Pages
-
-1. Subir estos archivos a la raíz del repositorio.
-2. En el repositorio: **Settings → Pages**.
-3. En *Source*, elegir **Deploy from a branch**.
-4. Seleccionar la rama `main` y la carpeta `/ (root)`, y guardar.
-5. A los pocos minutos el sitio queda disponible en la URL que muestra esa misma pantalla.
 
 ## Créditos
 
