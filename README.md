@@ -16,6 +16,8 @@ del sistema.
 | [`guia.html`](guia.html) | Guía interactiva, con selector Android / iOS / comparación, capacidades de extracción, modo de operación, cadena de custodia, referencias y glosario. |
 | [`guia_adb.html`](guia_adb.html) | Guía ilustrada complementaria: cómo activar la depuración USB (ADB) en Android, paso a paso. |
 | `favicon.png` | Ícono de la marca CAPTA. |
+| `sitemap.xml` | Mapa del sitio para buscadores (Google Search Console). |
+| `robots.txt` | Permite el rastreo e indica la ubicación del sitemap. |
 
 Las tres páginas son **autocontenidas** (CSS e imágenes embebidas): funcionan sin
 conexión y no dependen de servicios externos. Comparten una capa común de tokens de
