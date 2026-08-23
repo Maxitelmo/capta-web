@@ -259,6 +259,10 @@
     :root:not([data-theme="light"]) .theme-toggle .ico-sun{display:block;}
     :root:not([data-theme="light"]) .theme-toggle .ico-moon{display:none;}
   }
+  /* ---------- Preguntas frecuentes ---------- */
+  .faq h3{font-size:15px;font-weight:600;color:var(--navy-dark);margin:var(--sp-4) 0 var(--sp-3);}
+  .faq h3:first-child{margin-top:0;}
+  .faq p{margin:0;}
 </style>
 <script>(function(){try{var t=localStorage.getItem('capta-theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
 </head>
@@ -338,6 +342,24 @@
 </section>
 
 <section>
+  <h2 class="secttitle">Preguntas frecuentes</h2>
+  <div class="card faq">
+    <h3>¿Qué es CAPTA?</h3>
+    <p>CAPTA (Colecta Ágil de PEP Técnico Auditable) es una herramienta de adquisición forense digital de campo para dispositivos móviles Android e iOS, desarrollada en el Ministerio Público Fiscal de Córdoba. Está diseñada para el primer interventor en la escena: realiza una recolección selectiva, documentada e íntegra de potenciales elementos probatorios (PEP) en minutos, con baja intrusión sobre el dispositivo.</p>
+    <h3>¿Qué es la adquisición forense digital de campo?</h3>
+    <p>Es la obtención de evidencia digital directamente en el lugar del procedimiento, sin trasladar el equipo a un laboratorio. A diferencia de los procesos de laboratorio, pensados para entornos con tiempo y recursos controlados, la adquisición de campo permite obtener información temprana que oriente decisiones críticas. CAPTA no reemplaza al laboratorio: ocupa la primera etapa de una estrategia forense escalonada.</p>
+    <h3>¿Quién desarrolló CAPTA?</h3>
+    <p>CAPTA fue desarrollada íntegramente dentro del Estado, en la Dirección de Investigación Operativa del Ministerio Público Fiscal de Córdoba, sobre la base de años de experiencia operativa en investigación de ciberdelitos y adquisiciones digitales en campo. Está aprobada por Resolución FG N° 7/26.</p>
+    <h3>¿En qué se diferencia de una extracción forense completa?</h3>
+    <p>CAPTA realiza una recolección selectiva de artefactos de alto valor probatorio a través de los canales oficiales de diagnóstico y respaldo de cada sistema (ADB en Android; respaldo lógico en iOS), sin requerir privilegios de superusuario (root o jailbreak) ni modificaciones persistentes del equipo. No busca copiar todo el dispositivo, sino aportar una adquisición rápida, documentada e íntegra en la primera etapa de la investigación.</p>
+    <h3>¿Cómo garantiza CAPTA la cadena de custodia?</h3>
+    <p>Mediante mecanismos verificables de forma independiente: hash SHA-256 por artefacto calculado al momento de la recolección, un log forense encadenado criptográficamente que vuelve detectable cualquier alteración posterior, manifiesto y bloqueo en solo lectura al cerrar la adquisición, y CAPTA Verificador, que revalida hashes y cadena sin la herramienta original, incluso en audiencia. Sigue los lineamientos de las normas ISO/IEC 27037, 27041, 27042, 27043 y NIST SP 800-101 r1.</p>
+    <h3>¿Funciona en Android y iOS?</h3>
+    <p>Sí. CAPTA opera sobre dispositivos Android e iOS a través de los canales oficiales de cada sistema. En Android utiliza la depuración USB (ADB) y en iOS el respaldo lógico. Las capacidades por plataforma se detallan en la <a href="guia.html">guía interactiva</a>.</p>
+  </div>
+</section>
+
+<section>
   <h2 class="secttitle">Documentación</h2>
   <div class="doclist">
     <a class="doc" href="guia.html">
@@ -384,6 +406,62 @@
     try{localStorage.setItem('capta-theme',next);}catch(e){}
   });
 })();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué es CAPTA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CAPTA (Colecta Ágil de PEP Técnico Auditable) es una herramienta de adquisición forense digital de campo para dispositivos móviles Android e iOS, desarrollada en el Ministerio Público Fiscal de Córdoba. Está diseñada para el primer interventor en la escena: realiza una recolección selectiva, documentada e íntegra de potenciales elementos probatorios (PEP) en minutos, con baja intrusión sobre el dispositivo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es la adquisición forense digital de campo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es la obtención de evidencia digital directamente en el lugar del procedimiento, sin trasladar el equipo a un laboratorio. A diferencia de los procesos de laboratorio, pensados para entornos con tiempo y recursos controlados, la adquisición de campo permite obtener información temprana que oriente decisiones críticas. CAPTA no reemplaza al laboratorio: ocupa la primera etapa de una estrategia forense escalonada."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Quién desarrolló CAPTA?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CAPTA fue desarrollada íntegramente dentro del Estado, en la Dirección de Investigación Operativa del Ministerio Público Fiscal de Córdoba, sobre la base de años de experiencia operativa en investigación de ciberdelitos y adquisiciones digitales en campo. Está aprobada por Resolución FG N° 7/26."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿En qué se diferencia de una extracción forense completa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "CAPTA realiza una recolección selectiva de artefactos de alto valor probatorio a través de los canales oficiales de diagnóstico y respaldo de cada sistema (ADB en Android; respaldo lógico en iOS), sin requerir privilegios de superusuario (root o jailbreak) ni modificaciones persistentes del equipo. No busca copiar todo el dispositivo, sino aportar una adquisición rápida, documentada e íntegra en la primera etapa de la investigación."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo garantiza CAPTA la cadena de custodia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mediante mecanismos verificables de forma independiente: hash SHA-256 por artefacto calculado al momento de la recolección, un log forense encadenado criptográficamente que vuelve detectable cualquier alteración posterior, manifiesto y bloqueo en solo lectura al cerrar la adquisición, y CAPTA Verificador, que revalida hashes y cadena sin la herramienta original, incluso en audiencia. Sigue los lineamientos de las normas ISO/IEC 27037, 27041, 27042, 27043 y NIST SP 800-101 r1."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Funciona en Android y iOS?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. CAPTA opera sobre dispositivos Android e iOS a través de los canales oficiales de cada sistema. En Android utiliza la depuración USB (ADB) y en iOS el respaldo lógico. Las capacidades por plataforma se detallan en la guía interactiva."
+      }
+    }
+  ]
+}
 </script>
 </body>
 </html>
