@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://maxitelmo.github.io/capta-web/sitemap.xml
