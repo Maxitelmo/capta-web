@@ -441,7 +441,7 @@
     </div>
     <div class="col col-ios">
       <h4><span class="badge badge-ios">iOS · 8.3 (actualizada)</span></h4>
-      <p>CAPTA extrae el historial de SMS/iMessage mediante el respaldo lógico selectivo. Para WhatsApp, primero genera un índice único, en texto completo y buscable, de todas las conversaciones del dispositivo. Después, solo para los chats que el operador marca específicamente como de interés para la causa, genera además la vista visual completa con imágenes, audios y videos adjuntos.</p>
+      <p>CAPTA extrae el historial de SMS/iMessage mediante el respaldo lógico selectivo. Para WhatsApp, genera la vista visual completa (con imágenes, audios y videos adjuntos) de los chats que el operador marca específicamente como de interés para la causa. El texto del resto de las conversaciones se conserva y se coteja contra los términos de búsqueda cargados en la investigación previa, aunque no se vuelca como documento navegable aparte.</p>
       <p>Sobre los chats marcados de interés, la vista de WhatsApp en iOS incorpora, cuando el mensaje los tiene:</p>
       <ul class="plain">
         <li><strong>Respuestas citadas:</strong> el mensaje original queda enlazado con un chip que salta directo a él, con un placeholder legible si lo citado es multimedia (por ejemplo "[imagen]").</li>
@@ -598,7 +598,6 @@
   <div class="card">
     <p>Al finalizar una adquisición, CAPTA genera un conjunto de documentos pensados para ser autoexplicativos, tanto para el operador como para quien los reciba en la causa: un reporte forense principal en formato HTML navegable, con todas las categorías extraídas organizadas por pestañas; el mismo conjunto de datos en formato JSON estructurado, pensado para procesamiento posterior o auditoría técnica; un acta de recolección con los datos del procedimiento, el destino del dispositivo y las verificaciones realizadas; y el log forense encadenado descripto en la sección 5.</p>
     <p>El reporte principal incluye, cuando corresponden, la vista HTML de conversaciones de WhatsApp, la vista de <code>Analisis_Comunicaciones.html</code> (sección 4.14) y los resultados de los módulos de detección disponibles según la plataforma. La verificación posterior de integridad de todo el paquete se realiza con la herramienta <code>CAPTA_Verificador</code>, que recalcula los hashes y valida la cadena del log.</p>
-    <div class="note only-ios">En iOS, además del reporte principal, el índice completo y buscable de conversaciones de WhatsApp (sección 8.3) queda disponible como documento propio, independiente de qué chats se hayan marcado para vista completa.</div>
   </div>
 </section>
 
