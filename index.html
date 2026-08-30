@@ -300,13 +300,14 @@
   <p class="lead">Resumen de las capacidades actuales sobre Android e iOS; el detalle por plataforma está en la <a href="guia.html">guía interactiva</a>.</p>
   <ul class="feature">
     <li><strong>Identidad del dispositivo.</strong> Modelo, número de serie, sistema operativo, apps instaladas y marcas temporales con zona horaria.</li>
-    <li><strong>Llamadas, SMS y WhatsApp.</strong> Registros de comunicación y vista de la conversación de WhatsApp con adjuntos; en iOS, además reacciones, ediciones y encuestas.</li>
-    <li><strong>Contactos, calendario y cuentas.</strong> Agenda, eventos y cuentas vinculadas; en iOS también notas con sus adjuntos y autocompletado del navegador (direcciones).</li>
+    <li><strong>Llamadas, SMS y WhatsApp.</strong> Registros de comunicación y vista de la conversación de WhatsApp con adjuntos; en iOS, además reacciones, ediciones y encuestas, y los acuses de entrega y lectura de SMS/iMessage distinguidos por dirección.</li>
+    <li><strong>Contactos, calendario y cuentas.</strong> Agenda, eventos y cuentas vinculadas; en iOS también notas con sus adjuntos, autocompletado del navegador (direcciones), búsquedas web recientes de Safari y dispositivos Bluetooth emparejados.</li>
     <li><strong>Ubicación.</strong> GPS, Wi-Fi y celdas en Android; en iOS, coordenadas de los metadatos de las fotos.</li>
     <li><strong>Fotografías, videos y multimedia.</strong> Inventario y copia deliberada, con extracción de metadatos EXIF y coordenadas GPS.</li>
     <li><strong>Detección de imágenes generadas por IA.</strong> Analiza los metadatos de las fotos para detectar generación por inteligencia artificial, sin alterar el archivo (Android).</li>
     <li><strong>Actividad y apps de interés.</strong> Uso de permisos, apps recientes y detección de apps de criptoactivos, ocultamiento y bancarias (Android).</li>
     <li><strong>Análisis por interlocutor.</strong> Agrupa toda la comunicación por persona en lugar de orden cronológico plano.</li>
+    <li><strong>Retención por caso y validación independiente (iOS).</strong> El alcance de lo que se conserva se ajusta al rol del equipo en la causa (testigo o imputado), y el respaldo puede cotejarse con una herramienta de código abierto de uso forense internacional (iLEAPP).</li>
   </ul>
 </section>
 
@@ -356,6 +357,10 @@
     <p>Mediante mecanismos verificables de forma independiente: hash SHA-256 por artefacto calculado al momento de la recolección, un log forense encadenado criptográficamente que vuelve detectable cualquier alteración posterior, manifiesto y bloqueo en solo lectura al cerrar la adquisición, y CAPTA Verificador, que revalida hashes y cadena sin la herramienta original, incluso en audiencia. Sigue los lineamientos de las normas ISO/IEC 27037, 27041, 27042, 27043 y NIST SP 800-101 r1.</p>
     <h3>¿Funciona en Android y iOS?</h3>
     <p>Sí. CAPTA opera sobre dispositivos Android e iOS a través de los canales oficiales de cada sistema. En Android utiliza la depuración USB (ADB) y en iOS el respaldo lógico. Las capacidades por plataforma se detallan en la <a href="guia.html">guía interactiva</a>.</p>
+    <h3>¿Se puede validar lo que informa CAPTA con otra herramienta?</h3>
+    <p>Sí. En iOS, CAPTA puede preservar el respaldo lógico del dispositivo en un formato estándar, con un manifiesto que registra el hash SHA-256 de cada archivo. Ese respaldo puede analizarse con iLEAPP (iOS Logs, Events, And Plists Parser), una herramienta de código abierto de uso extendido en la comunidad forense internacional. CAPTA no integra ni redistribuye iLEAPP: deja el respaldo en un formato compatible y asienta en el reporte la constancia necesaria para que el cotejo sea reproducible y su integridad, verificable con software de terceros.</p>
+    <h3>¿CAPTA copia todo el contenido del teléfono?</h3>
+    <p>No necesariamente. En iOS, al extraer se elige el alcance de retención según el rol del equipo en la causa, respetando el principio de proporcionalidad: en modo acotado (pensado para equipos de víctima o testigo) el operador elige qué categorías conservar y lo no seleccionado no se retiene ni se reporta; en modo amplio (imputado) además se preserva el respaldo completo para su cotejo posterior. En ambas plataformas, la copia de archivos multimedia es siempre una acción deliberada del operador, nunca automática.</p>
   </div>
 </section>
 
@@ -365,7 +370,7 @@
     <a class="doc" href="guia.html">
       <div>
         <div class="doc-title">Guía interactiva · Android / iOS</div>
-        <div class="doc-desc">Capacidades, modo de operación, cadena de custodia y glosario. Versión 3.1, con iOS.</div>
+        <div class="doc-desc">Capacidades, modo de operación, cadena de custodia y glosario. Versión 3.2, con iOS y cotejo independiente.</div>
       </div>
       <span class="doc-arrow">→</span>
     </a>
@@ -458,6 +463,22 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Sí. CAPTA opera sobre dispositivos Android e iOS a través de los canales oficiales de cada sistema. En Android utiliza la depuración USB (ADB) y en iOS el respaldo lógico. Las capacidades por plataforma se detallan en la guía interactiva."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se puede validar lo que informa CAPTA con otra herramienta?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. En iOS, CAPTA puede preservar el respaldo lógico del dispositivo en un formato estándar, con un manifiesto que registra el hash SHA-256 de cada archivo. Ese respaldo puede analizarse con iLEAPP (iOS Logs, Events, And Plists Parser), una herramienta de código abierto de uso extendido en la comunidad forense internacional. CAPTA no integra ni redistribuye iLEAPP: deja el respaldo en un formato compatible y asienta en el reporte la constancia necesaria para que el cotejo sea reproducible y su integridad, verificable con software de terceros."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿CAPTA copia todo el contenido del teléfono?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No necesariamente. En iOS, al extraer se elige el alcance de retención según el rol del equipo en la causa, respetando el principio de proporcionalidad: en modo acotado (pensado para equipos de víctima o testigo) el operador elige qué categorías conservar y lo no seleccionado no se retiene ni se reporta; en modo amplio (imputado) además se preserva el respaldo completo para su cotejo posterior. En ambas plataformas, la copia de archivos multimedia es siempre una acción deliberada del operador, nunca automática."
       }
     }
   ]
