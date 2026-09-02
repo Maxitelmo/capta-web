@@ -381,6 +381,7 @@
   <symbol id="i-check-circle" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></symbol>
   <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 21 2M17 6l3 3M15 8l2 2"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
   <symbol id="i-external" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
 </svg>
 
@@ -534,35 +535,35 @@
     </div>
     <div class="faq">
       <details>
-        <summary>¿Qué es CAPTA?<svg class="ic chev"><use href="#i-arrow" transform="rotate(90 12 12)"/></svg></summary>
+        <summary>¿Qué es CAPTA?<svg class="ic chev"><use href="#i-chevron"/></svg></summary>
         <div class="answer"><p>CAPTA (Colecta Ágil de PEP Técnico Auditable) es una herramienta de adquisición forense digital de campo para dispositivos móviles Android e iOS, desarrollada en el Ministerio Público Fiscal de Córdoba. Está diseñada para el primer interventor en la escena: realiza una recolección selectiva, documentada e íntegra de potenciales elementos probatorios (PEP) en minutos, con baja intrusión sobre el dispositivo.</p></div>
       </details>
       <details>
-        <summary>¿Qué es la adquisición forense digital de campo?<svg class="ic chev"><use href="#i-arrow" transform="rotate(90 12 12)"/></svg></summary>
+        <summary>¿Qué es la adquisición forense digital de campo?<svg class="ic chev"><use href="#i-chevron"/></svg></summary>
         <div class="answer"><p>Es la obtención de evidencia digital directamente en el lugar del procedimiento, sin trasladar el equipo a un laboratorio. A diferencia de los procesos de laboratorio, pensados para entornos con tiempo y recursos controlados, la adquisición de campo permite obtener información temprana que oriente decisiones críticas. CAPTA no reemplaza al laboratorio: ocupa la primera etapa de una estrategia forense escalonada.</p></div>
       </details>
       <details>
-        <summary>¿Quién desarrolló CAPTA?<svg class="ic chev"><use href="#i-arrow" transform="rotate(90 12 12)"/></svg></summary>
+        <summary>¿Quién desarrolló CAPTA?<svg class="ic chev"><use href="#i-chevron"/></svg></summary>
         <div class="answer"><p>CAPTA fue desarrollada íntegramente dentro del Estado, en la Dirección de Investigación Operativa del Ministerio Público Fiscal de Córdoba, sobre la base de años de experiencia operativa en investigación de ciberdelitos y adquisiciones digitales en campo. Está aprobada por Resolución FG N° 7/26.</p></div>
       </details>
       <details>
-        <summary>¿En qué se diferencia de una extracción forense completa?<svg class="ic chev"><use href="#i-arrow" transform="rotate(90 12 12)"/></svg></summary>
+        <summary>¿En qué se diferencia de una extracción forense completa?<svg class="ic chev"><use href="#i-chevron"/></svg></summary>
         <div class="answer"><p>CAPTA realiza una recolección selectiva de artefactos de alto valor probatorio a través de los canales oficiales de diagnóstico y respaldo de cada sistema (ADB en Android; respaldo lógico en iOS), sin requerir privilegios de superusuario (root o jailbreak) ni modificaciones persistentes del equipo. No busca copiar todo el dispositivo, sino aportar una adquisición rápida, documentada e íntegra en la primera etapa de la investigación.</p></div>
       </details>
       <details>
-        <summary>¿Cómo garantiza CAPTA la cadena de custodia?<svg class="ic chev"><use href="#i-arrow" transform="rotate(90 12 12)"/></svg></summary>
+        <summary>¿Cómo garantiza CAPTA la cadena de custodia?<svg class="ic chev"><use href="#i-chevron"/></svg></summary>
         <div class="answer"><p>Mediante mecanismos verificables de forma independiente: hash SHA-256 por artefacto calculado al momento de la recolección, un log forense encadenado criptográficamente que vuelve detectable cualquier alteración posterior, manifiesto y bloqueo en solo lectura al cerrar la adquisición, y CAPTA Verificador, que revalida hashes y cadena sin la herramienta original, incluso en audiencia. Sigue los lineamientos de las normas ISO/IEC 27037, 27041, 27042, 27043 y NIST SP 800-101 r1.</p></div>
       </details>
       <details>
-        <summary>¿Funciona en Android y iOS?<svg class="ic chev"><use href="#i-arrow" transform="rotate(90 12 12)"/></svg></summary>
+        <summary>¿Funciona en Android y iOS?<svg class="ic chev"><use href="#i-chevron"/></svg></summary>
         <div class="answer"><p>Sí. CAPTA opera sobre dispositivos Android e iOS a través de los canales oficiales de cada sistema. En Android utiliza la depuración USB (ADB) y en iOS el respaldo lógico. Las capacidades por plataforma se detallan en la <a href="guia.html">guía interactiva</a>.</p></div>
       </details>
       <details>
-        <summary>¿Se puede validar lo que informa CAPTA con otra herramienta?<svg class="ic chev"><use href="#i-arrow" transform="rotate(90 12 12)"/></svg></summary>
+        <summary>¿Se puede validar lo que informa CAPTA con otra herramienta?<svg class="ic chev"><use href="#i-chevron"/></svg></summary>
         <div class="answer"><p>Sí. En iOS, CAPTA puede preservar el respaldo lógico del dispositivo en un formato estándar, con un manifiesto que registra el hash SHA-256 de cada archivo. Ese respaldo puede analizarse con iLEAPP (iOS Logs, Events, And Plists Parser), una herramienta de código abierto de uso extendido en la comunidad forense internacional. CAPTA no integra ni redistribuye iLEAPP: deja el respaldo en un formato compatible y asienta en el reporte la constancia necesaria para que el cotejo sea reproducible y su integridad, verificable con software de terceros.</p></div>
       </details>
       <details>
-        <summary>¿CAPTA copia todo el contenido del teléfono?<svg class="ic chev"><use href="#i-arrow" transform="rotate(90 12 12)"/></svg></summary>
+        <summary>¿CAPTA copia todo el contenido del teléfono?<svg class="ic chev"><use href="#i-chevron"/></svg></summary>
         <div class="answer"><p>No necesariamente. En iOS, al extraer se elige el alcance de retención según el rol del equipo en la causa, respetando el principio de proporcionalidad: en modo acotado (pensado para equipos de víctima o testigo) el operador elige qué categorías conservar y lo no seleccionado no se retiene ni se reporta; en modo amplio (imputado) además se preserva el respaldo completo para su cotejo posterior. En ambas plataformas, la copia de archivos multimedia es siempre una acción deliberada del operador, nunca automática.</p></div>
       </details>
     </div>
