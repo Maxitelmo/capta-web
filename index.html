@@ -186,7 +186,9 @@
   }
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);max-width:var(--maxw);margin:0 auto;padding:0 var(--sp-5);}
   .brand{display:flex;align-items:center;gap:var(--sp-2);font-weight:700;color:var(--primary);font-size:18px;letter-spacing:.2px;}
-  .brand img{height:26px;width:auto;display:block;}
+  .brand:hover{text-decoration:none;}
+  .brand-mark{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:var(--radius-sm);background:var(--accent-soft);color:var(--accent);}
+  .brand-mark .ic{width:19px;height:19px;}
   .nav-links{display:flex;align-items:center;gap:var(--sp-5);}
   .nav-links a{color:var(--ink-soft);font-size:var(--fs-sm);font-weight:500;padding:6px 0;position:relative;}
   .nav-links a:hover{color:var(--accent);text-decoration:none;}
@@ -217,14 +219,17 @@
       radial-gradient(900px 450px at 5% 0%,color-mix(in srgb,var(--primary-600) 18%,transparent),transparent 55%),
       var(--bg);
     border-bottom:1px solid var(--line);}
-  .hero-inner{max-width:var(--maxw);margin:0 auto;padding:var(--sp-8) var(--sp-5);display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--sp-4);}
-  .hero img.logo{height:104px;width:auto;margin-bottom:var(--sp-2);}
+  .hero-inner{max-width:var(--maxw);margin:0 auto;padding:var(--sp-8) var(--sp-5);display:grid;grid-template-columns:1.25fr .85fr;gap:var(--sp-7);align-items:center;}
+  .hero-copy{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:var(--sp-3);}
+  .hero-art{display:flex;align-items:center;justify-content:center;}
+  .hero-emblem{background:linear-gradient(150deg,var(--brand-bg),#164a78);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:40px 48px;box-shadow:var(--shadow);}
+  .hero-art img.logo{height:200px;width:auto;display:block;}
   .badge{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:var(--radius-pill);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-sm);color:var(--ink-soft);font-size:var(--fs-xs);font-weight:500;}
   .badge .ic{width:16px;height:16px;color:var(--accent);}
-  .hero h1{margin:0;font-size:var(--fs-h1);line-height:1.12;font-weight:700;letter-spacing:-.02em;color:var(--primary);max-width:16ch;}
+  .hero h1{margin:0;font-size:clamp(30px,3.4vw,46px);line-height:1.1;font-weight:700;letter-spacing:-.02em;color:var(--primary);}
   .hero .acronym{margin:0;color:var(--ink-muted);font-size:var(--fs-sm);letter-spacing:.3px;}
-  .hero .sub{margin:var(--sp-2) 0 0;color:var(--ink-soft);font-size:18px;max-width:60ch;}
-  .cta-row{display:flex;gap:var(--sp-3);flex-wrap:wrap;justify-content:center;margin-top:var(--sp-4);}
+  .hero .sub{margin:var(--sp-2) 0 0;color:var(--ink-soft);font-size:18px;max-width:54ch;}
+  .cta-row{display:flex;gap:var(--sp-3);flex-wrap:wrap;justify-content:flex-start;margin-top:var(--sp-4);}
   .btn{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-sm);font-weight:600;padding:12px 22px;border-radius:var(--radius-sm);border:1px solid transparent;cursor:pointer;transition:background var(--transition),border-color var(--transition),transform var(--transition);}
   .btn:hover{text-decoration:none;transform:translateY(-1px);}
   .btn-primary{background:var(--primary-600);color:#fff;box-shadow:var(--shadow-sm);}
@@ -321,6 +326,15 @@
   footer .reg{font-size:var(--fs-2xs);color:#6f83a3;margin-top:var(--sp-3);line-height:1.5;max-width:80ch;}
 
   /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .hero-inner{grid-template-columns:1fr;gap:var(--sp-5);}
+    .hero-copy{align-items:center;text-align:center;}
+    .hero-art{order:-1;}
+    .hero-emblem{padding:28px 34px;}
+    .hero-art img.logo{height:132px;}
+    .hero h1{max-width:18ch;}
+    .cta-row{justify-content:center;}
+  }
   @media (max-width:860px){
     .grid,.subgrid{grid-template-columns:repeat(2,1fr);}
   }
@@ -373,7 +387,7 @@
 <!-- Nav -->
 <nav class="nav">
   <div class="nav-inner">
-    <a class="brand" href="#top"><img src="assets/footer-capta.png" alt=""><span>CAPTA</span></a>
+    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><svg class="ic"><use href="#i-shield-check"/></svg></span><span>CAPTA</span></a>
     <div class="nav-links" id="navLinks">
       <a href="#capacidades">Capacidades</a>
       <a href="#cadena-custodia">Cadena de custodia</a>
@@ -400,14 +414,18 @@
 <!-- Hero -->
 <header class="hero">
   <div class="hero-inner">
-    <img class="logo" src="assets/logo-capta.png" alt="CAPTA">
-    <div class="badge"><svg class="ic"><use href="#i-shield-check"/></svg> Dirección de Investigación Operativa · Aprobada por Resolución FG N° 7/26</div>
-    <h1>CAPTA · Colecta Ágil de PEP Técnico Auditable</h1>
-    <p class="acronym">PEP · Potencial Elemento Probatorio</p>
-    <p class="sub">Herramienta de adquisición forense digital de campo para dispositivos móviles Android e iOS, desarrollada en el Ministerio Público Fiscal de Córdoba.</p>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="guia.html">Ver la guía interactiva <svg class="ic" style="width:18px;height:18px"><use href="#i-arrow"/></svg></a>
-      <a class="btn btn-ghost" href="guia_adb.html">Guía de depuración USB (ADB)</a>
+    <div class="hero-copy">
+      <div class="badge"><svg class="ic"><use href="#i-shield-check"/></svg> Dirección de Investigación Operativa · Aprobada por Resolución FG N° 7/26</div>
+      <h1>CAPTA · Colecta Ágil de PEP Técnico Auditable</h1>
+      <p class="acronym">PEP · Potencial Elemento Probatorio</p>
+      <p class="sub">Herramienta de adquisición forense digital de campo para dispositivos móviles Android e iOS, desarrollada en el Ministerio Público Fiscal de Córdoba.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="guia.html">Ver la guía interactiva <svg class="ic" style="width:18px;height:18px"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="guia_adb.html">Guía de depuración USB (ADB)</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="hero-emblem"><img class="logo" src="assets/logo-capta.png" alt="CAPTA"></div>
     </div>
   </div>
 </header>
