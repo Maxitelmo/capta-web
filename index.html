@@ -187,8 +187,8 @@
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);max-width:var(--maxw);margin:0 auto;padding:0 var(--sp-5);}
   .brand{display:flex;align-items:center;gap:var(--sp-2);font-weight:700;color:var(--primary);font-size:18px;letter-spacing:.2px;}
   .brand:hover{text-decoration:none;}
-  .brand-mark{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:var(--radius-sm);background:var(--accent-soft);color:var(--accent);}
-  .brand-mark .ic{width:19px;height:19px;}
+  .brand-logo{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:4px 8px;background:#fff;border-radius:var(--radius-sm);border:1px solid var(--line);}
+  .brand-logo img{height:26px;width:auto;display:block;}
   .nav-links{display:flex;align-items:center;gap:var(--sp-5);}
   .nav-links a{color:var(--ink-soft);font-size:var(--fs-sm);font-weight:500;padding:6px 0;position:relative;}
   .nav-links a:hover{color:var(--accent);text-decoration:none;}
@@ -388,7 +388,7 @@
 <!-- Nav -->
 <nav class="nav">
   <div class="nav-inner">
-    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><svg class="ic"><use href="#i-shield-check"/></svg></span><span>CAPTA</span></a>
+    <a class="brand" href="#top"><span class="brand-logo"><img src="assets/footer-mpf.png" alt="Ministerio Público Fiscal de Córdoba"></span><span>CAPTA</span></a>
     <div class="nav-links" id="navLinks">
       <a href="#capacidades">Capacidades</a>
       <a href="#cadena-custodia">Cadena de custodia</a>
