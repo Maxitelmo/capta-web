@@ -199,6 +199,61 @@
     :root:not([data-theme="light"]) .theme-toggle .ico-sun{display:block;}
     :root:not([data-theme="light"]) .theme-toggle .ico-moon{display:none;}
   }
+
+  /* ============================================================
+     Restyle v2 · alineado con la portada (index.html)
+     Paleta teal + navy, tipografía Inter, esquinas redondeadas,
+     sombras suaves y header con gradiente. Se aplica por override.
+     ============================================================ */
+  :root{
+    --navy:#1a3c66; --navy-dark:#12294a;
+    --accent:#00677f; --accent-600:#00566a; --accent-soft:#e2f1f5;
+    --android:#276b3f; --ios:#1b568f; --both:#5b3a70;
+    --brand:#0f2340; --step-bg:#12294a;
+    --bg:#f6f8fb; --paper:#ffffff; --line:#e1e6ee;
+    --note-bg:#fbfbf9; --code-bg:#eef1f4; --hover:#f4f6fa;
+    --ink:#1b2129; --ink-soft:#4b535d; --ink-muted:#7a828d;
+    --accent-note:#8a7433;
+    --fs-h2:19px;
+    --radius:10px; --radius-sm:6px; --transition:150ms ease; --maxw:940px;
+    --shadow:0 1px 2px rgba(16,26,45,.04),0 6px 22px rgba(16,26,45,.06);
+    --shadow-sm:0 1px 2px rgba(16,26,45,.05);
+    --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  }
+  :root[data-theme="dark"]{
+    --navy:#5cc9e6; --navy-dark:#e8ecf1;
+    --accent:#5cc9e6; --accent-600:#7ad4ec; --accent-soft:#0f2d38;
+    --android:#7bc99a; --ios:#8fbce6; --both:#b48fce;
+    --brand:#0b1626; --step-bg:#2f5488;
+    --bg:#12161c; --paper:#1a1f27; --line:#2b333d;
+    --note-bg:#20262f; --code-bg:#2a323b; --hover:#20262f;
+    --ink:#e6e9ee; --ink-soft:#aab3be; --ink-muted:#7f8893;
+    --accent-note:#c8ad5f;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 26px rgba(0,0,0,.35);
+    --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --navy:#5cc9e6; --navy-dark:#e8ecf1;
+      --accent:#5cc9e6; --accent-600:#7ad4ec; --accent-soft:#0f2d38;
+      --android:#7bc99a; --ios:#8fbce6; --both:#b48fce;
+      --brand:#0b1626; --step-bg:#2f5488;
+      --bg:#12161c; --paper:#1a1f27; --line:#2b333d;
+      --note-bg:#20262f; --code-bg:#2a323b; --hover:#20262f;
+      --ink:#e6e9ee; --ink-soft:#aab3be; --ink-muted:#7f8893;
+      --accent-note:#c8ad5f;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 26px rgba(0,0,0,.35);
+      --shadow-sm:0 1px 2px rgba(0,0,0,.3);
+    }
+  }
+  body{font-family:var(--sans);}
+  a:hover{color:var(--accent);}
+  section[id]{scroll-margin-top:64px;}
+  header.hero{background:linear-gradient(135deg,var(--brand),#164a78);border-bottom:1px solid rgba(255,255,255,.08);}
+  .card{box-shadow:var(--shadow-sm);}
+  #toc{box-shadow:var(--shadow-sm);}
+  .chip,.tag-mini{border-radius:var(--radius-sm);}
+  code,.mono{border-radius:var(--radius-sm);}
 </style>
 <script>(function(){try{var t=localStorage.getItem('capta-theme');if(t==='dark'||t==='light'){document.documentElement.setAttribute('data-theme',t);}}catch(e){}})();</script>
 </head>
