@@ -10,7 +10,7 @@
 <meta name="description" content="CAPTA es la herramienta de adquisición forense digital de campo para dispositivos móviles del Ministerio Público Fiscal de Córdoba. Baja intrusión, integridad verificable y cadena de custodia técnica.">
 <meta name="keywords" content="CAPTA, CAPTA forense, adquisición forense móvil, MPF Córdoba, Ministerio Público Fiscal de Córdoba, forense digital, cadena de custodia, Android, iOS, ADB, PEP técnico">
 <meta name="robots" content="index, follow, max-image-preview:large">
-<meta name="author" content="Ministerio Público Fiscal de Córdoba">
+<meta name="author" content="Maximiliano Facundo Telmo Gonzalez">
 <link rel="canonical" href="https://maxitelmo.github.io/capta-web/">
 <meta property="og:title" content="CAPTA · Colecta Ágil de PEP Técnico Auditable">
 <meta property="og:description" content="Adquisición forense móvil de baja intrusión, desarrollada en el Ministerio Público Fiscal de Córdoba. Aprobada por Resolución FG N° 7/26.">
@@ -34,7 +34,15 @@
       "name": "CAPTA",
       "description": "Sitio institucional y guías de CAPTA — Colecta Ágil de PEP Técnico Auditable, herramienta de adquisición forense digital móvil del Ministerio Público Fiscal de Córdoba.",
       "inLanguage": "es-AR",
-      "publisher": { "@id": "https://maxitelmo.github.io/capta-web/#org" }
+      "author": { "@id": "https://maxitelmo.github.io/capta-web/#author" },
+      "publisher": { "@id": "https://maxitelmo.github.io/capta-web/#author" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://maxitelmo.github.io/capta-web/#author",
+      "name": "Maximiliano Facundo Telmo Gonzalez",
+      "url": "https://github.com/Maxitelmo",
+      "sameAs": ["https://github.com/Maxitelmo"]
     },
     {
       "@type": "GovernmentOrganization",
@@ -199,8 +207,7 @@
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);max-width:var(--maxw);margin:0 auto;padding:0 var(--sp-5);}
   .brand{display:flex;align-items:center;gap:var(--sp-2);font-weight:700;color:var(--primary);font-size:18px;letter-spacing:.2px;}
   .brand:hover{text-decoration:none;}
-  .brand-logo{display:inline-flex;align-items:center;justify-content:center;height:36px;padding:4px 8px;background:#fff;border-radius:var(--radius-sm);border:1px solid var(--line);}
-  .brand-logo img{height:26px;width:auto;display:block;}
+  .brand-logo{display:block;width:36px;height:36px;border-radius:var(--radius-sm);}
   .nav-links{display:flex;align-items:center;gap:var(--sp-5);}
   .nav-links a{color:var(--ink-soft);font-size:var(--fs-sm);font-weight:500;padding:6px 0;position:relative;}
   .nav-links a:hover{color:var(--accent);text-decoration:none;}
@@ -328,7 +335,7 @@
 
   /* ---------- Footer ---------- */
   footer{background:var(--brand-bg);color:#9fb0cc;padding:var(--sp-7) 0 var(--sp-6);text-align:center;font-size:var(--fs-xs);}
-  footer .credit{font-size:var(--fs-2xs);letter-spacing:.5px;text-transform:uppercase;color:#8a9cba;margin:0 0 var(--sp-4);}
+  footer .credit{font-size:var(--fs-2xs);letter-spacing:.5px;text-transform:uppercase;color:#8a9cba;margin:0 auto var(--sp-4);}
   footer .logos{display:flex;justify-content:center;align-items:center;gap:var(--sp-3);flex-wrap:wrap;margin-bottom:var(--sp-4);}
   footer .logobox{background:#fff;border-radius:var(--radius-sm);padding:8px 12px;display:flex;align-items:center;}
   footer .logobox img{display:block;height:28px;width:auto;}
@@ -401,7 +408,7 @@
 <!-- Nav -->
 <nav class="nav">
   <div class="nav-inner">
-    <a class="brand" href="#top"><span class="brand-logo"><img src="assets/footer-mpf.png" alt="Ministerio Público Fiscal de Córdoba"></span><span>CAPTA</span></a>
+    <a class="brand" href="#top"><img class="brand-logo" src="favicon.png" alt="" width="36" height="36"><span>CAPTA</span></a>
     <div class="nav-links" id="navLinks">
       <a href="#capacidades">Capacidades</a>
       <a href="#cadena-custodia">Cadena de custodia</a>
@@ -611,7 +618,8 @@
       <div class="logobox"><img src="assets/footer-pia.png" alt="PIA, Programa de Investigación Aplicada"></div>
     </div>
     <p>CAPTA, Ministerio Público Fiscal de Córdoba. Material de capacitación y difusión de uso abierto.</p>
-    <p class="reg">Registrada en la Dirección Nacional del Derecho de Autor como obra inédita de software (legajo RL-2026-43611249-APN-DNDA#MJ).</p>
+    <p class="reg">Registrada en la Dirección Nacional del Derecho de Autor como obra inédita de software (legajo <span style="white-space:nowrap">RL-2026-43611249-APN-DNDA#MJ</span>).</p>
+    <p class="reg">Sitio de difusión independiente; no es un canal oficial del Ministerio Público Fiscal de Córdoba.</p>
   </div>
 </footer>
 
