@@ -209,17 +209,18 @@
   .brand:hover{text-decoration:none;}
   .brand-logo{display:block;width:36px;height:36px;border-radius:var(--radius-sm);}
   .nav-links{display:flex;align-items:center;gap:var(--sp-5);}
-  .nav-links a{color:var(--ink-soft);font-size:var(--fs-sm);font-weight:500;padding:6px 0;position:relative;}
+  .nav-links a{color:var(--ink-soft);font-size:var(--fs-sm);font-weight:500;padding:6px 0;position:relative;white-space:nowrap;}
   .nav-links a:hover{color:var(--accent);text-decoration:none;}
   .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--accent);transform:scaleX(0);transition:transform var(--transition);}
   .nav-links a:hover::after{transform:scaleX(1);}
+  .nav-mobile-only{display:none;}
   .nav-actions{display:flex;align-items:center;gap:var(--sp-2);}
   .theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);background:var(--surface);color:var(--ink-soft);border-radius:var(--radius-sm);cursor:pointer;transition:background var(--transition),color var(--transition);}
   .theme-toggle:hover{background:var(--hover);color:var(--accent);}
   .theme-toggle svg{width:19px;height:19px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
   .theme-toggle .ico-sun{display:none;}
   .theme-toggle .ico-moon{display:block;}
-  .nav-cta{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:var(--on-accent);font-size:var(--fs-sm);font-weight:600;padding:9px 16px;border-radius:var(--radius-sm);transition:background var(--transition);}
+  .nav-cta{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;background:var(--accent);color:var(--on-accent);font-size:var(--fs-sm);font-weight:600;padding:9px 16px;border-radius:var(--radius-sm);transition:background var(--transition);}
   .nav-cta:hover{background:var(--accent-600);text-decoration:none;color:var(--on-accent);}
   .menu-btn{display:none;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:var(--radius-sm);cursor:pointer;}
   .menu-btn svg{width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
@@ -357,13 +358,16 @@
   @media (max-width:860px){
     .grid,.subgrid{grid-template-columns:repeat(2,1fr);}
   }
-  @media (max-width:760px){
+  @media (max-width:1200px){
     .nav-links{position:absolute;top:var(--nav-h);left:0;right:0;background:var(--surface);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;padding:var(--sp-2) var(--sp-5) var(--sp-4);box-shadow:var(--shadow);display:none;}
     .nav-links.open{display:flex;}
     .nav-links a{padding:12px 0;border-bottom:1px solid var(--line);}
     .nav-links a::after{display:none;}
-    .nav-cta{display:none;}
     .menu-btn{display:inline-flex;}
+  }
+  @media (max-width:760px){
+    .nav-links a.nav-mobile-only{display:block;color:var(--accent);font-weight:600;border-bottom:0;}
+    .nav-cta{display:none;}
     .two-col{grid-template-columns:1fr;}
   }
   @media (max-width:560px){
@@ -410,12 +414,13 @@
   <div class="nav-inner">
     <a class="brand" href="#top"><img class="brand-logo" src="favicon.png" alt="" width="36" height="36"><span>CAPTA</span></a>
     <div class="nav-links" id="navLinks">
-      <a href="#capacidades">Capacidades</a>
+      <a href="#capacidades">Qué releva</a>
       <a href="#cadena-custodia">Cadena de custodia</a>
-      <a href="#respaldo-ileapp">iOS · iLEAPP</a>
-      <a href="#respaldo">Respaldo</a>
+      <a href="#respaldo-ileapp">Validación iOS</a>
+      <a href="#respaldo">Aval institucional</a>
       <a href="#guias">Guías</a>
-      <a href="#faq">FAQ</a>
+      <a href="#faq">Preguntas frecuentes</a>
+      <a class="nav-mobile-only" href="guia.html">Ver la guía interactiva →</a>
     </div>
     <div class="nav-actions">
       <a class="nav-cta" href="guia.html">Ver la guía <svg class="ic" style="width:16px;height:16px"><use href="#i-arrow"/></svg></a>
@@ -531,7 +536,7 @@
   <section id="respaldo">
     <div class="sec-head">
       <span class="sec-ico"><svg class="ic"><use href="#i-bank"/></svg></span>
-      <h2 class="sectitle">Respaldo institucional</h2>
+      <h2 class="sectitle">Aval institucional</h2>
     </div>
     <div class="card">
       <p>CAPTA fue desarrollada íntegramente dentro del Estado, en la <strong>Dirección de Investigación Operativa</strong> del Ministerio Público Fiscal de Córdoba, sobre la base de años de experiencia operativa en investigación de ciberdelitos y adquisiciones digitales en campo.</p>
@@ -599,6 +604,14 @@
         <div>
           <div class="doc-title">Guía interactiva · Android / iOS</div>
           <div class="doc-desc">Capacidades, modo de operación, cadena de custodia y glosario. Versión 3.2, con iOS y cotejo independiente.</div>
+        </div>
+        <svg class="ic doc-arrow"><use href="#i-arrow"/></svg>
+      </a>
+      <a class="doc" href="guia_adb.html">
+        <span class="doc-ico"><svg class="ic"><use href="#i-phone"/></svg></span>
+        <div>
+          <div class="doc-title">Guía ilustrada · Activar la depuración USB (ADB)</div>
+          <div class="doc-desc">Paso a paso con capturas para habilitar ADB en Android antes de la adquisición.</div>
         </div>
         <svg class="ic doc-arrow"><use href="#i-arrow"/></svg>
       </a>
