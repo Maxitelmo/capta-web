@@ -2,7 +2,9 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-86ivAVTsR38Q5sJPZ+8r+WUsfIGt5xx6g6iHZl6tzgI=' 'sha256-ey47vD+s9TvpwUUFe8bKlifSLx991ytukQV+tkrvExM='; style-src 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none'; object-src 'none'">
 <title>CAPTA · Colecta Ágil de PEP Técnico Auditable</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <meta name="description" content="CAPTA es la herramienta de adquisición forense digital de campo para dispositivos móviles del Ministerio Público Fiscal de Córdoba. Baja intrusión, integridad verificable y cadena de custodia técnica.">
@@ -39,7 +41,6 @@
       "@id": "https://maxitelmo.github.io/capta-web/#org",
       "name": "Ministerio Público Fiscal de Córdoba",
       "alternateName": "MPF Córdoba",
-      "url": "https://maxitelmo.github.io/capta-web/",
       "areaServed": "AR-X"
     },
     {
@@ -280,7 +281,7 @@
   .chip{display:inline-block;font-size:var(--fs-2xs);font-weight:600;color:var(--ink-soft);background:var(--surface-2);border:1px solid var(--line);padding:4px 10px;border-radius:var(--radius-pill);white-space:nowrap;letter-spacing:.2px;}
 
   /* Sub-tarjetas de integridad */
-  .subgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin-top:var(--sp-5);}
+  .subgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-4);margin-top:var(--sp-5);}
   .subcard{background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius-sm);padding:var(--sp-4);display:flex;flex-direction:column;gap:8px;}
   .subcard .fc-ico{background:transparent;color:var(--primary-600);width:32px;height:32px;margin:0;}
   .subcard h4{margin:0;font-size:var(--fs-sm);font-weight:600;color:var(--primary);}
@@ -392,7 +393,6 @@
   <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></symbol>
   <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
   <symbol id="i-check-circle" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></symbol>
-  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"/><path d="M10.7 12.3 21 2M17 6l3 3M15 8l2 2"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
   <symbol id="i-external" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
@@ -497,7 +497,6 @@
         <div class="subcard"><span class="fc-ico"><svg class="ic"><use href="#i-link"/></svg></span><h4>Log forense encadenado</h4><p>Encadenado criptográficamente: cualquier alteración posterior de un solo carácter se vuelve detectable al recalcular la cadena.</p></div>
         <div class="subcard"><span class="fc-ico"><svg class="ic"><use href="#i-lock"/></svg></span><h4>Manifiesto y solo lectura</h4><p>Manifiesto y bloqueo en solo lectura al cerrar la adquisición.</p></div>
         <div class="subcard"><span class="fc-ico"><svg class="ic"><use href="#i-check-circle"/></svg></span><h4>CAPTA Verificador</h4><p>Revalida hashes y cadena sin necesidad de la herramienta original, incluso en una audiencia.</p></div>
-        <div class="subcard"><span class="fc-ico"><svg class="ic"><use href="#i-key"/></svg></span><h4>Licenciamiento atado al kit</h4><p>Cada ejecutable queda individualizado criptográficamente al hardware autorizado.</p></div>
       </div>
       <div class="chips">
         <span class="chip">ISO/IEC 27037</span>
@@ -612,7 +611,7 @@
       <div class="logobox"><img src="assets/footer-pia.png" alt="PIA, Programa de Investigación Aplicada"></div>
     </div>
     <p>CAPTA, Ministerio Público Fiscal de Córdoba. Material de capacitación y difusión de uso abierto.</p>
-    <p class="reg">Registrada en la Dirección Nacional del Derecho de Autor como obra inédita de software, legajo RL-2026-43611249-APN-DNDA#MJ, a nombre de Maximiliano Facundo Telmo Gonzalez, el Poder Judicial de Córdoba y la Universidad Nacional de Córdoba.</p>
+    <p class="reg">Registrada en la Dirección Nacional del Derecho de Autor como obra inédita de software (legajo RL-2026-43611249-APN-DNDA#MJ).</p>
   </div>
 </footer>
 
