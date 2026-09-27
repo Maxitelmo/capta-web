@@ -194,7 +194,7 @@
   .skip-link{position:absolute;left:var(--sp-4);top:-100px;z-index:100;background:var(--surface);color:var(--primary);font-weight:600;font-size:var(--fs-sm);padding:10px 16px;border:2px solid var(--accent);border-radius:var(--radius-sm);}
   .skip-link:focus{top:var(--sp-3);text-decoration:none;}
   :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:var(--radius-sm);}
-  .accent-panel :focus-visible,footer :focus-visible{outline-color:#8fe6ff;}
+  footer :focus-visible{outline-color:#8fe6ff;}
   main:focus{outline:none;}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--sp-5);}
   .ic{width:22px;height:22px;stroke:currentColor;stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto;}
@@ -299,19 +299,11 @@
   ul.plain li{margin-bottom:var(--sp-2);color:var(--ink-soft);}
   ul.plain li:last-child{margin-bottom:0;}
   ul.plain a{word-break:break-word;}
-  .ext{display:inline-flex;align-items:center;gap:4px;}
-  .ext .ic{width:14px;height:14px;stroke-width:2;color:var(--ink-muted);}
+  .ext{display:inline;}
+  .ext .ic{width:14px;height:14px;stroke-width:2;color:var(--ink-muted);vertical-align:-2px;margin-left:2px;}
 
-  /* Panel de acento (iLEAPP) */
-  .accent-panel{background:linear-gradient(135deg,var(--brand-bg),color-mix(in srgb,var(--brand-bg) 78%,var(--accent-600)));color:#e8eef6;border-radius:var(--radius);padding:var(--sp-6);border:1px solid color-mix(in srgb,#000 20%,var(--brand-bg));box-shadow:var(--shadow);}
-  .accent-panel .sec-head{margin-bottom:var(--sp-3);}
-  .accent-panel .sec-ico{background:rgba(255,255,255,.12);color:#8fe6ff;}
-  .accent-panel h2{color:#fff;}
-  .accent-panel p{color:#c9d6e8;margin:0 0 var(--sp-3);}
-  .accent-panel strong{color:#fff;}
-  .accent-panel a{color:#9fdcff;}
-  .accent-panel .note{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);border-left-color:#8fe6ff;color:#c9d6e8;}
-  .accent-panel .note strong{color:#fff;}
+  /* Tarjeta con acento lateral (iLEAPP) */
+  .card-accent{border-left:3px solid var(--accent);}
 
   /* FAQ acordeón */
   .faq{display:flex;flex-direction:column;gap:var(--sp-3);}
@@ -350,8 +342,8 @@
     .hero-inner{grid-template-columns:1fr;gap:var(--sp-5);}
     .hero-copy{align-items:center;text-align:center;}
     .hero-art{order:-1;}
-    .hero-emblem{padding:28px 34px;}
-    .hero-art img.logo{height:132px;}
+    .hero-emblem{padding:16px 22px;border-radius:14px;}
+    .hero-art img.logo{height:88px;}
     .hero h1{max-width:18ch;}
     .cta-row{justify-content:center;}
   }
@@ -450,7 +442,7 @@
       </div>
     </div>
     <div class="hero-art">
-      <div class="hero-emblem"><img class="logo" src="assets/logo-capta.png" alt="CAPTA"></div>
+      <div class="hero-emblem"><img class="logo" src="assets/logo-capta.png" alt="CAPTA" width="260" height="260"></div>
     </div>
   </div>
 </header>
@@ -523,11 +515,11 @@
 
   <!-- Validación independiente iOS (iLEAPP) -->
   <section id="respaldo-ileapp">
-    <div class="accent-panel">
-      <div class="sec-head">
-        <span class="sec-ico"><svg class="ic"><use href="#i-shield-check"/></svg></span>
-        <h2 class="sectitle">Validación independiente en iOS (iLEAPP)</h2>
-      </div>
+    <div class="sec-head">
+      <span class="sec-ico"><svg class="ic"><use href="#i-shield-check"/></svg></span>
+      <h2 class="sectitle">Validación independiente en iOS (iLEAPP)</h2>
+    </div>
+    <div class="card card-accent">
       <p>En iOS, CAPTA usa el <strong>respaldo lógico estándar de Apple</strong> (el mismo de iTunes/Finder), sin jailbreak. En modo de retención amplio preserva además el respaldo completo con un manifiesto SHA-256, para que lo informado pueda <strong>cotejarse con iLEAPP</strong>, una herramienta forense de código abierto de uso internacional.</p>
       <div class="note">Alcances de retención, datos que CAPTA aprovecha del respaldo y cómo reproducir el cotejo: <a href="guia.html#s415">guía interactiva, sección 4.15</a>.</div>
     </div>
@@ -549,8 +541,8 @@
       <p style="margin-top:var(--sp-4);">Se usa con autorización judicial motivada, por personal capacitado, y cada adquisición queda documentada en reporte forense y acta de recolección.</p>
       <p class="sec-lead" style="margin:var(--sp-4) 0 0;">Publicaciones en las 55.° JAIIO (Jornadas Argentinas de Informática, SADIO · 2026):</p>
       <ul class="plain">
-        <li><a class="ext" href="https://55jaiio.sadio.org.ar/wp-content/uploads/2026/07/125.pdf" target="_blank" rel="noopener"><em>Low-Intrusion Mobile Forensic Acquisition in the Field: An Operational Approach to Selective Digital Evidence Collection</em> <svg class="ic"><use href="#i-external"/></svg></a> · PDF</li>
-        <li><a class="ext" href="https://55jaiio.sadio.org.ar/wp-content/uploads/2026/07/194.pdf" target="_blank" rel="noopener"><em>Selective Logical Acquisition Model for Low-Intrusion Mobile Devices with Integrity and Traceability Guarantees in Field Contexts</em> <svg class="ic"><use href="#i-external"/></svg></a> · PDF</li>
+        <li><a class="ext" href="https://55jaiio.sadio.org.ar/wp-content/uploads/2026/07/125.pdf" target="_blank" rel="noopener"><em>Low-Intrusion Mobile Forensic Acquisition in the Field: An Operational Approach to Selective Digital Evidence Collection</em> · PDF <svg class="ic"><use href="#i-external"/></svg></a></li>
+        <li><a class="ext" href="https://55jaiio.sadio.org.ar/wp-content/uploads/2026/07/194.pdf" target="_blank" rel="noopener"><em>Selective Logical Acquisition Model for Low-Intrusion Mobile Devices with Integrity and Traceability Guarantees in Field Contexts</em> · PDF <svg class="ic"><use href="#i-external"/></svg></a></li>
       </ul>
     </div>
   </section>
@@ -615,9 +607,9 @@
   <div class="wrap">
     <p class="credit">Un desarrollo de</p>
     <div class="logos">
-      <div class="logobox capta"><img src="assets/footer-capta.png" alt="CAPTA"></div>
-      <div class="logobox"><img src="assets/footer-mpf.png" alt="Ministerio Público Fiscal de Córdoba"></div>
-      <div class="logobox"><img src="assets/footer-pia.png" alt="PIA, Programa de Investigación Aplicada"></div>
+      <div class="logobox capta"><img src="assets/footer-capta.png" alt="CAPTA" width="96" height="96"></div>
+      <div class="logobox"><img src="assets/footer-mpf.png" alt="Ministerio Público Fiscal de Córdoba" width="186" height="96"></div>
+      <div class="logobox"><img src="assets/footer-pia.png" alt="PIA, Programa de Investigación Aplicada" width="192" height="96"></div>
     </div>
     <p>CAPTA, Ministerio Público Fiscal de Córdoba. Material de capacitación y difusión de uso abierto.</p>
     <p class="reg">Registrada en la Dirección Nacional del Derecho de Autor como obra inédita de software (legajo <span style="white-space:nowrap">RL-2026-43611249-APN-DNDA#MJ</span>).</p>
