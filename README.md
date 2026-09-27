@@ -23,6 +23,17 @@ Las tres páginas son **autocontenidas** (CSS e imágenes embebidas): funcionan 
 conexión y no dependen de servicios externos. Comparten una capa común de tokens de
 diseño (color, tipografía y espaciado) mantenida idéntica en los tres archivos.
 
+### Política de seguridad de contenido (CSP)
+
+Cada página declara una CSP en `<meta http-equiv="Content-Security-Policy">` que solo
+permite los `<script>` internos cuyo hash SHA-256 figura en `script-src`. **Si se
+modifica o agrega un script interno, hay que recalcular su hash** o el navegador lo
+bloqueará. No usar atributos `onclick=` ni similares: asignar eventos desde un script.
+
+```sh
+python3 -c "import re,sys,hashlib,base64;s=open(sys.argv[1],encoding='utf-8').read();[print(\"'sha256-%s'\"%base64.b64encode(hashlib.sha256(m.encode()).digest()).decode()) for m in re.findall(r'<script>(.*?)</script>',s,re.S)]" index.html
+```
+
 
 ## Créditos
 
