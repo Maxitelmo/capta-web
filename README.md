@@ -18,6 +18,7 @@ del sistema.
 | `favicon.png` | Ícono de la marca CAPTA. |
 | `sitemap.xml` | Mapa del sitio para buscadores (Google Search Console). |
 | `robots.txt` | Permite el rastreo e indica la ubicación del sitemap. |
+| [`worker-actualizacion/`](worker-actualizacion/README.md) | Área privada de descargas de actualizaciones (Cloudflare Worker con login). No se enlaza desde el sitio; el código es público pero no contiene usuarios, contraseñas ni ZIP. |
 
 Las tres páginas son **autocontenidas** (CSS e imágenes embebidas): funcionan sin
 conexión y no dependen de servicios externos. Comparten una capa común de tokens de

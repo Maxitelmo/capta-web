@@ -1,0 +1,30 @@
+name = "capta-actualizacion"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+workers_dev = false
+
+# Rutas: se sirven SOLO estas rutas desde el Worker; el resto del dominio
+# sigue en GitHub Pages. Reemplazar "capta.ejemplo.gob.ar" por el dominio real
+# (debe estar en Cloudflare con proxy activado).
+routes = [
+  { pattern = "capta.ejemplo.gob.ar/actualizacion", zone_name = "ejemplo.gob.ar" },
+  { pattern = "capta.ejemplo.gob.ar/actualizacion/*", zone_name = "ejemplo.gob.ar" },
+]
+
+[vars]
+BASE_PATH = "/actualizacion"   # debe coincidir con las rutas de arriba
+SESSION_TTL = "28800"          # 8 h
+MAX_USERS = "100"
+
+# Usuarios, sesiones, límites de intentos y manifiesto de versiones.
+[[kv_namespaces]]
+binding = "DB"
+id = "REEMPLAZAR_CON_ID_DEL_NAMESPACE"
+
+# ZIP de CAPTA (bucket privado: sin acceso público ni dominio r2.dev).
+[[r2_buckets]]
+binding = "ZIPS"
+bucket_name = "capta-actualizaciones"
+
+[observability]
+enabled = true
