@@ -1,4 +1,4 @@
-# CAPTA · Sitio institucional y guías de estudio
+# CAPTA · Sitio NO institucional y guías de estudio
 
 Sitio de **CAPTA (Colecta Ágil de PEP Técnico Auditable)**, la herramienta de
 adquisición forense digital móvil (Android / iOS) del **Ministerio Público Fiscal
