@@ -414,10 +414,10 @@
     <li><a href="#s3">3. Modo de operación</a></li>
     <li><a href="#s4">4. Capacidades de extracción y análisis</a></li>
     <li class="only-android"><a href="#s411">4.11 Detección de apps de interés forense</a></li>
-    <li class="only-android"><a href="#s412">4.12 Detector de imágenes generadas por IA</a></li>
+    <li><a href="#s412">4.12 Detector de imágenes generadas por IA</a></li>
     <li class="only-android"><a href="#s413">4.13 Snapshot de memoria volátil</a></li>
     <li><a href="#s414">4.14 Análisis por interlocutor</a></li>
-    <li class="only-ios"><a href="#s415">4.15 Retención por caso y cotejo con iLEAPP</a></li>
+    <li class="only-ios"><a href="#s415">4.15 Backup CAPTA, Backup iLEAPP y cotejo</a></li>
     <li><a href="#s5">5. Integridad de la evidencia y cadena de custodia</a></li>
     <li><a href="#s6">6. Limitaciones técnicas</a></li>
     <li class="only-ios"><a href="#s89">8.9 Limitaciones específicas de iOS</a></li>
@@ -486,7 +486,7 @@
       <li><strong>Documentación del procedimiento y destino del dispositivo.</strong> Reporte forense y acta de recolección, con constancia del destino final del equipo (secuestrado o devuelto).</li>
       <li><strong>Entrega de la adquisición y borrado del portable.</strong> Se entrega la carpeta del caso junto con CAPTA_Verificador; el equipo de trabajo se borra de forma segura.</li>
     </ol>
-    <div class="note only-ios"><strong>Alcance de retención en iOS (proporcionalidad):</strong> al extraer el respaldo del iPhone —paso que se realiza con el botón <strong>«Extraer backup»</strong>— el operador define qué se conserva según el rol del equipo en la causa. En modo <strong>acotado (testigo)</strong>, predeterminado, elige qué categorías retener (SMS, contactos, llamadas, WhatsApp, cuentas, extras, Chrome) y lo no seleccionado no se conserva ni se reporta. En modo <strong>amplio (imputado)</strong>, además se preserva el respaldo iTunes completo con manifiesto SHA-256, apto para cotejo posterior con una herramienta independiente (ver 4.15). El respaldo transfiere el equipo entero de todos modos —así funciona el mecanismo de Apple—; acotar limita la retención y el reporte, no la transferencia.</div>
+    <div class="note only-ios"><strong>Dos modos de backup en iOS:</strong> al extraer el respaldo del iPhone, el operador elige entre el <strong>Backup CAPTA</strong>, que conserva y reporta en el momento solo las categorías elegidas (SMS, contactos, llamadas, WhatsApp, cuentas, extras, Chrome) y las fotos marcadas, y el <strong>Backup iLEAPP</strong>, que preserva el respaldo completo con manifiesto SHA-256 para analizarlo después con una herramienta independiente (ver 4.15). El respaldo transfiere el equipo entero de todos modos (así funciona el mecanismo de Apple): elegir categorías limita la retención y el reporte, no la transferencia. Para víctimas y testigos está además <strong>CAPTA Esencial</strong>, con menos herramientas a la vista y el mismo rigor de custodia: en iPhone copia solo la multimedia que se elige y el chat de WhatsApp que se aporta, sin backup.</div>
   </div>
 </section>
 
@@ -499,7 +499,7 @@
     <div class="col col-android">
       <h4><span class="badge badge-android">Android · 4.1</span></h4>
       <p>Modelo y fabricante, número de serie, versión del sistema operativo, identificador de compilación, IP y MAC, fecha y hora exacta de la extracción, hora del último arranque (vía batterystats), ocupación de almacenamiento, operador y tipo de red, cuentas vinculadas y lista completa de apps instaladas. Todas las marcas temporales llevan etiqueta de zona horaria explícita. También se registra el estado de batería (carga, temperatura, fuente).</p>
-      <div class="note">CAPTA no extrae automáticamente IMEI ni número de línea en Android; se pueden obtener por captura o grabación de pantalla si el procedimiento lo requiere.</div>
+      <div class="note">Al «Detectar» el equipo, CAPTA abre «Acerca del teléfono» y el marcador con <code>*#06#</code> y lee de la pantalla el IMEI y la línea, guardando la captura del cuadro. No escribe archivos en el equipo ni deja entrada en el registro de llamadas, y queda constancia en el registro forense. También releva las SIM y eSIM registradas en el equipo. Si el IMEI no se puede leer, se carga a mano con control del dígito verificador.</div>
     </div>
     <div class="col col-ios">
       <h4><span class="badge badge-ios">iOS · 8.2</span></h4>
@@ -557,7 +557,7 @@
     <div class="col col-ios">
       <h4><span class="badge badge-ios">iOS · 8.8</span></h4>
       <p>CAPTA recupera del respaldo las <strong>búsquedas web recientes de Safari</strong> (la lista rotante de términos que la app conserva en sus preferencias). Complementa el autocompletado de direcciones del navegador Chrome descripto arriba (8.4).</p>
-      <div class="note">Es una lista corta y rotante de términos recientes, <strong>no</strong> el historial completo de navegación: el <code>History.db</code> de Safari queda en una clase de protección que el respaldo lógico sin cifrar no incluye (ver 8.9).</div>
+      <div class="note">Es una lista corta y rotante de términos recientes, <strong>no</strong> el historial completo de navegación. El historial completo (<code>History.db</code>) queda en una clase de protección que el respaldo sin cifrar no incluye: se obtiene con el Backup CAPTA cifrado o con el Backup iLEAPP (ver 4.15 y 8.9).</div>
     </div>
   </div>
 
@@ -579,7 +579,7 @@
     <div class="col col-ios">
       <h4><span class="badge badge-ios">iOS · 8.7</span></h4>
       <p>En esta versión CAPTA releva del respaldo lógico los <strong>dispositivos Bluetooth emparejados</strong> con el iPhone: la asociación del equipo con otros dispositivos (auriculares, vehículos, wearables, otros teléfonos) y la fecha de su última conexión. Es un dato de vínculo entre dispositivos con valor para reconstruir el entorno del usuario.</p>
-      <div class="note">iOS no expone por el canal de respaldo lógico el historial de conexiones Wi-Fi, por lo que esa capacidad sigue siendo solo de Android (ver 8.9).</div>
+      <div class="note">iOS no expone por el canal de respaldo lógico el historial de conexiones Wi-Fi. Los logs unificados de Apple, si se colectan, pueden mostrar eventos de Wi-Fi del período que el equipo todavía conserva (ver 8.6 y 8.9).</div>
     </div>
   </div>
 
@@ -605,6 +605,7 @@
       <h4><span class="badge badge-ios">iOS · 8.6</span></h4>
       <p>A diferencia de Android, donde CAPTA dispone de un conjunto amplio de registros del sistema, en iOS Apple no expone un conjunto equivalente por canal oficial sin vulnerar el equipo. CAPTA releva en su lugar los registros de diagnóstico y fallos del sistema (crash logs), que permiten establecer rastros de ejecución de determinadas apps.</p>
       <p>A esto se suma, en esta versión, el relevamiento de los <strong>snapshots de uso de aplicaciones</strong> que iOS conserva para el conmutador de apps (app-switcher), obtenidos del respaldo lógico. Aportan indicios de qué aplicaciones estuvieron en uso.</p>
+      <p>CAPTA colecta además los <strong>logs unificados de Apple</strong> y cura sus eventos de telefonía, Wi-Fi, SIM, desbloqueo, AirDrop y cámara en una línea de tiempo con el detalle crudo; pueden analizarse en sede sobre un relevamiento ya sellado. Con el Backup CAPTA cifrado se suman las interacciones del sistema (ver 4.15).</p>
       <div class="note">La marca de "último uso" de estos snapshots es esparsa y no se registra para todas las apps: por sí sola no prueba que la aplicación haya estado en primer plano ni que el usuario viera su contenido. Es un indicio orientativo, no una conclusión.</div>
     </div>
   </div>
@@ -619,11 +620,11 @@
   </div>
 </section>
 
-<section id="s412" data-only="android" class="only-android">
-  <h2 class="secttitle">4.12 Detector de imágenes generadas por IA <span class="badge badge-android">Solo Android</span></h2>
+<section id="s412">
+  <h2 class="secttitle">4.12 Detector de imágenes generadas por IA <span class="badge badge-both">Ambas plataformas</span></h2>
   <div class="card">
-    <p>Cuando el operador copia fotografías, CAPTA aplica un módulo de detección de imágenes generadas por IA sobre los metadatos, sin modificar el archivo original: metadatos EXIF/IPTC (campo DigitalSourceType), manifiesto C2PA de procedencia (cuya sola presencia no implica IA: Pixel, Leica y Sony también firman fotos auténticas con C2PA), y un catálogo de generadores 2024 a 2026.</p>
-    <div class="note">Un resultado negativo no descarta que una imagen sea sintética: los metadatos pueden haberse eliminado antes de compartirla. A la fecha de esta versión, este módulo no está disponible para iOS.</div>
+    <p>Cuando el operador copia fotografías, CAPTA aplica un módulo de detección de imágenes generadas por IA sobre los metadatos, sin modificar el archivo original: metadatos EXIF/IPTC (campo DigitalSourceType), manifiesto C2PA de procedencia (cuya sola presencia no implica IA: Pixel, Leica y Sony también firman fotos auténticas con C2PA), y un catálogo de generadores 2024 a 2026. La firma C2PA se verifica sin conexión contra las listas de confianza oficiales, y el reporte informa si es válida con el firmante en la lista, válida con el firmante fuera de ella, o inválida.</p>
+    <div class="note">Un resultado negativo no descarta que una imagen sea sintética: los metadatos pueden haberse eliminado antes de compartirla. El módulo se aplica igual en Android y en iOS, sobre las fotos y videos que se copian.</div>
   </div>
 </section>
 
@@ -639,7 +640,7 @@
   <h2 class="secttitle">4.14 Análisis por interlocutor <span class="badge badge-both">Ambas plataformas</span></h2>
   <div class="card">
     <p>A partir de los registros de llamadas, SMS y WhatsApp ya extraídos, CAPTA genera automáticamente un análisis derivado que agrupa toda la comunicación por interlocutor (la persona o línea del otro lado), en lugar de listarla en orden cronológico plano. No es una nueva adquisición: opera exclusivamente sobre datos ya obtenidos y hasheados, con las mismas claves para Android y para el backup de iOS.</p>
-    <p>Para unificar variantes de un mismo número (con o sin prefijo de país, con o sin el 0/15 argentino), CAPTA agrupa por los últimos 8 dígitos. Cada número crudo visto queda conservado y visible en la ficha del interlocutor, para que el perito pueda auditar cualquier agrupación.</p>
+    <p>Para unificar variantes de un mismo número (con o sin prefijo de país, con o sin el 0/15 argentino), CAPTA agrupa por los últimos 8 dígitos. Cada número crudo visto queda conservado y visible en la ficha del interlocutor, para que el operador pueda auditar cualquier agrupación.</p>
     <p>Por cada interlocutor, el análisis muestra los números asociados, si está en la agenda, el total de eventos, el desglose por canal (llamadas entrantes / salientes / perdidas, SMS recibidos / enviados, resumen de WhatsApp con enlace a la conversación ya renderizada) y las fechas de primer y último contacto. Además calcula tres señales orientativas: números frecuentes que no están en la agenda, contactos de la agenda sin ninguna comunicación registrada, y relaciones de una sola vía (solo entrante o solo saliente).</p>
     <p>CAPTA produce tres salidas: una vista HTML interactiva (<code>Analisis_Comunicaciones.html</code>) con filtro por texto, canal, dirección y rango de fechas, y alternancia entre vista por interlocutor y vista cronológica; un archivo <code>interlocutores.csv</code>; y los mismos datos dentro del JSON completo del dispositivo. La vista HTML queda enlazada desde la pestaña Comunicaciones del reporte principal.</p>
     <div class="note"><strong>Nota:</strong> las señales de "fuera de agenda" y "una sola vía" son orientativas, no conclusiones, requieren valoración del operador. El registro de llamadas de Android suele conservar solo las últimas 500 entradas del sistema, aproximadamente, y los SMS no incluyen conversaciones RCS/Chat.</div>
@@ -647,18 +648,17 @@
 </section>
 
 <section id="s415" data-only="ios" class="only-ios">
-  <h2 class="secttitle">4.15 Retención por caso y cotejo con herramienta independiente <span class="badge badge-ios">Solo iOS</span></h2>
+  <h2 class="secttitle">4.15 Backup CAPTA, Backup iLEAPP y cotejo con herramienta independiente <span class="badge badge-ios">Solo iOS</span></h2>
   <div class="card">
-    <p><strong>Retención por caso (proporcionalidad).</strong> Al extraer el respaldo del iPhone, CAPTA permite ajustar qué se conserva al rol del equipo en la causa, respetando el alcance de la orden:</p>
+    <p><strong>Dos modos de backup.</strong> Al extraer el respaldo del iPhone, el operador elige el modo según lo que necesita la causa y el alcance de la orden:</p>
     <ul class="plain">
-      <li><strong>Acotado (testigo)</strong> — predeterminado. El operador elige qué categorías conservar (SMS, contactos, llamadas, WhatsApp, cuentas, extras, Chrome). Lo no seleccionado no se retiene ni se reporta. Pensado para equipos de víctima o testigo, donde corresponde limitar la injerencia.</li>
-      <li><strong>Amplio (imputado)</strong> — además de la custodia curada, preserva el <strong>respaldo iTunes completo</strong> (Manifest.db y archivos) en <code>Evidencias/Backup_iOS_Completo/&lt;UDID&gt;</code>, con un manifiesto que registra el <strong>hash SHA-256 de cada archivo</strong>.</li>
+      <li><strong>Backup CAPTA</strong>: para el triaje. El operador elige qué categorías conservar (SMS, contactos, llamadas, WhatsApp, cuentas, extras, Chrome), las fotos marcadas y los chats de WhatsApp de interés; CAPTA lo custodia y lo reporta en el momento. Lo no seleccionado no se retiene ni se reporta. Puede hacerse <strong>sin cifrar</strong> (mínima intervención: no escribe en el equipo) o <strong>cifrado</strong>, que suma el historial de Safari, los datos de Salud y las interacciones del sistema (ver 5 sobre el cifrado temporal).</li>
+      <li><strong>Backup iLEAPP</strong>: para un análisis exhaustivo posterior. Trae todo, incluidos el rollo de cámara y la multimedia de WhatsApp, en un respaldo cifrado, sin selección ni reporte inmediato. Preserva el <strong>respaldo iTunes completo</strong> (Manifest.db y archivos) en <code>Evidencias/Backup_iOS_Completo/&lt;UDID&gt;</code>, con un manifiesto que registra el <strong>hash SHA-256 de cada archivo</strong>. Antes de empezar, CAPTA avisa el espacio libre necesario.</li>
     </ul>
-    <div class="note">El mecanismo de respaldo de Apple transfiere el equipo entero en cualquiera de los dos modos; acotar limita la <strong>retención en disco y el reporte</strong>, no la transferencia por el cable.</div>
+    <div class="note">El mecanismo de respaldo de Apple transfiere el equipo entero en cualquiera de los dos modos; elegir categorías limita la <strong>retención en disco y el reporte</strong>, no la transferencia por el cable.</div>
 
-    <p><strong>Cotejo externo con iLEAPP.</strong> El respaldo preservado en modo amplio queda en un formato estándar que puede abrirse directamente con <strong>iLEAPP</strong> (iOS Logs, Events, And Plists Parser), una herramienta de código abierto (licencia MIT) de uso extendido en la comunidad forense internacional. CAPTA <strong>no la integra ni la redistribuye</strong>: solo deja el respaldo en un formato que iLEAPP lee, de modo que lo informado por CAPTA pueda <strong>validarse con una herramienta de terceros</strong>. El cotejo se corre con <code>ileapp.py -t itunes</code> sobre la carpeta preservada.</p>
-    <p>Para que ese cotejo sea reproducible y su integridad verificable, el reporte de CAPTA deja <strong>constancia</strong> (sección <em>Cotejo externo (iLEAPP)</em> en el HTML y una nota en el PDF) con la carpeta del respaldo, la cantidad de archivos y el hash del manifiesto SHA-256. La lectura del respaldo por iLEAPP fue verificada en dispositivo real.</p>
-    <div class="note">El alcance del cotejo depende del modo de retención: en modo <strong>amplio</strong> es <strong>pleno</strong> (iLEAPP lee el mismo árbol completo del que CAPTA arma su reporte); en modo <strong>acotado</strong> es <strong>parcial</strong>, limitado al subconjunto retenido.</div>
+    <p><strong>Cotejo externo con iLEAPP.</strong> El respaldo que preserva el Backup iLEAPP queda en un formato estándar que puede abrirse directamente con <strong>iLEAPP</strong> (iOS Logs, Events, And Plists Parser), una herramienta de código abierto (licencia MIT) de uso extendido en la comunidad forense internacional. CAPTA <strong>no la integra ni la redistribuye</strong>: solo deja el respaldo en un formato que iLEAPP lee, de modo que lo relevado pueda <strong>analizarse y validarse con una herramienta de terceros</strong>. El análisis se corre con <code>ileapp.py -t itunes</code> sobre la carpeta preservada.</p>
+    <p>Para que ese análisis sea reproducible y su integridad verificable, CAPTA deja <strong>constancia</strong> en el registro forense y en el acta de la carpeta del respaldo, la cantidad de archivos y el hash del manifiesto SHA-256. La lectura del respaldo por iLEAPP fue verificada en dispositivo real.</p>
   </div>
 </section>
 
@@ -668,8 +668,9 @@
     <p>El valor probatorio de una adquisición forense depende tanto de qué se extrae como de poder demostrar que lo extraído no fue alterado. CAPTA aplica el mismo mecanismo de integridad a los dos sistemas operativos: cada archivo y cada categoría de datos obtenida recibe un hash SHA-256 calculado en el momento de la extracción, antes de cualquier procesamiento posterior.</p>
     <p>Todas las acciones relevantes del procedimiento (inicio y fin de cada etapa, archivos recolectados, resultado de cada verificación) quedan asentadas en un log forense encadenado: cada entrada nueva incorpora información de la entrada anterior, de forma que cualquier alteración posterior del log, incluso de un solo carácter, se puede detectar al recalcular la cadena. El log queda incluido junto con el resto de la adquisición y es parte de lo que <code>CAPTA_Verificador</code> comprueba al validar un caso.</p>
     <p>Toda escritura que CAPTA realiza sobre el dispositivo (no sobre el equipo portable de trabajo, sino sobre el teléfono secuestrado) pasa por una política de whitelist: solo se permiten las operaciones puntuales necesarias para el procedimiento (por ejemplo, autorizar temporalmente la depuración), cada una queda registrada en el log forense, y todo lo que no está explícitamente permitido queda bloqueado por diseño.</p>
+    <div class="note only-ios">En iOS, el backup cifrado (Backup CAPTA cifrado o Backup iLEAPP) enciende el cifrado del respaldo con una contraseña temporal y lo apaga al terminar. Las dos escrituras quedan en el log forense y el acta las relata. Si el cifrado no llega a apagarse, CAPTA lo avisa y ofrece restaurar el equipo en la siguiente operación, también con constancia en el log.</div>
     <div class="note only-ios">En iOS, antes de generar el respaldo lógico, CAPTA verifica si el dispositivo tiene configurada la opción de cifrado de copia local. Si está activada y no se cuenta con la contraseña, el procedimiento se detiene sin alterar nada del equipo (ver 8.10).</div>
-    <div class="note only-ios">Cuando se preserva el respaldo iTunes completo (modo amplio, ver 4.15), CAPTA genera un manifiesto con el hash SHA-256 de cada archivo y deja constancia en el reporte de la carpeta, la cantidad de archivos y el hash del manifiesto. Así, un cotejo posterior con una herramienta independiente (iLEAPP) es reproducible y su integridad, verificable.</div>
+    <div class="note only-ios">Cuando se preserva el respaldo iTunes completo (Backup iLEAPP, ver 4.15), CAPTA genera un manifiesto con el hash SHA-256 de cada archivo y deja constancia en el registro forense y en el acta de la carpeta, la cantidad de archivos y el hash del manifiesto. Así, un cotejo posterior con una herramienta independiente (iLEAPP) es reproducible y su integridad, verificable.</div>
   </div>
 </section>
 
@@ -695,8 +696,8 @@
       <li>Los cuatro módulos de detección automática de apps de interés forense (criptoactivos, ocultamiento, bancarias, inteligencia artificial generativa) no están disponibles para iOS en esta versión: dependen de un análisis del sistema de archivos de apps que Apple no expone por el canal de respaldo lógico.</li>
       <li>No hay una captura de memoria volátil ni un snapshot de estado del sistema equivalente al de Android: Apple no expone ese nivel de acceso sin jailbreak.</li>
       <li>No existe una capacidad de localización geográfica separada: la única fuente de coordenadas es el metadato EXIF de las fotografías, cuando el geoetiquetado estaba activo.</li>
-      <li>No hay adquisición de historial de conexiones Wi-Fi: Apple no expone ese registro por el canal de respaldo lógico. Sí se relevan, en cambio, los dispositivos Bluetooth emparejados y su última conexión (ver 8.7).</li>
-      <li>El historial completo de navegación de Safari (<code>History.db</code>) y otros artefactos de alto valor (uso detallado de apps, ubicaciones significativas, salud) quedan en clases de protección que el respaldo lógico sin cifrar no incluye. De navegación, CAPTA sí obtiene las búsquedas web recientes de Safari (ver 8.8); de uso de apps, los snapshots del app-switcher con su salvedad (ver 8.6).</li>
+      <li>No hay adquisición de historial de conexiones Wi-Fi: Apple no expone ese registro por el canal de respaldo lógico. Sí se relevan los dispositivos Bluetooth emparejados y su última conexión (ver 8.7), y los logs unificados pueden mostrar eventos de Wi-Fi recientes (ver 8.6).</li>
+      <li>El historial completo de navegación de Safari (<code>History.db</code>), los datos de Salud y las interacciones del sistema quedan en clases de protección que el respaldo sin cifrar no incluye. Se obtienen con el Backup CAPTA cifrado o con el Backup iLEAPP, que encienden el cifrado del respaldo con una contraseña temporal (ver 4.15 y 5). Con el backup sin cifrar, de navegación CAPTA obtiene las búsquedas web recientes de Safari (ver 8.8) y de uso de apps, los snapshots del app-switcher con su salvedad (ver 8.6).</li>
       <li>El registro de llamadas telefónicas nativas depende de si el sistema lo incluyó en el respaldo generado; cuando no aparece, se documenta como ausencia de dato en ese respaldo puntual, no como inexistencia del dato en el dispositivo.</li>
       <li>Igual que en Android, CAPTA no accede al contenido cifrado extremo a extremo de apps de mensajería que no exponen un canal de exportación o backup propio.</li>
     </ul>
@@ -725,7 +726,7 @@
     <p>El cambio central entre la versión 2.5 y la 3.0.2 es la incorporación de iOS como plataforma soportada, con el mismo estándar de integridad, el mismo modo de operación en sus líneas generales y una filosofía compartida de no invasión: CAPTA no explota vulnerabilidades, no requiere root ni jailbreak, y documenta explícitamente cada límite en lugar de disimularlo.</p>
     <p>A eso se suma, ya en el tramo 3.0.1 a 3.0.2, el Análisis por interlocutor (sección 4.14), que no agrega una nueva fuente de datos sino que reorganiza lo ya extraído para orientar mejor la lectura de comunicaciones extensas, y una mejora sustancial en lo que CAPTA puede mostrar de WhatsApp en iOS (respuestas citadas, ediciones, reacciones, encuestas, llamadas y ubicación compartida), capacidades que en Android siguen limitadas por el formato de exportación .txt de la app.</p>
     <p>La versión 3.1 amplía la extracción en iOS con artefactos que antes no se recuperaban: las notas ahora bajan con sus adjuntos (imágenes y audios, enlazados a cada nota), se incorpora el autocompletado de direcciones del navegador Chrome (que las versiones previas dejaban invisible por leer una tabla desactualizada), y se suman la foto de cada contacto y los recordatorios. Como en el resto del sistema, cada dato se hashea al momento de la recolección y se documenta su origen; y CAPTA sigue sin extraer contraseñas en texto plano, porque el respaldo lógico sin cifrar no incluye el llavero donde iOS las guarda.</p>
-    <p>La versión 3.2 profundiza en iOS en tres frentes. Primero, <strong>aprovecha mejor el mismo respaldo lógico</strong> para leer datos que ya viajaban en él y no se explotaban: los acuses de entrega y lectura de SMS/iMessage distinguidos por dirección (sección 4.2), las búsquedas web recientes de Safari (8.8), los snapshots de uso de aplicaciones (8.6) y los dispositivos Bluetooth emparejados (8.7). Segundo, incorpora la <strong>retención por caso</strong>: el operador ajusta qué se conserva según el rol del equipo en la causa (testigo o imputado), en línea con el principio de proporcionalidad. Tercero, habilita el <strong>cotejo con una herramienta independiente</strong> (iLEAPP, de código abierto y uso forense internacional): CAPTA preserva el respaldo en un formato estándar y deja constancia verificable, de modo que lo informado pueda validarse con software de terceros (sección 4.15). Ninguna de estas mejoras cambia la filosofía de no invasión ni el estándar de integridad: cada dato se hashea al momento de la recolección y cada límite se documenta.</p>
+    <p>La versión 3.2 profundiza en iOS en tres frentes. Primero, <strong>aprovecha mejor el mismo respaldo lógico</strong> para leer datos que ya viajaban en él y no se explotaban: los acuses de entrega y lectura de SMS/iMessage distinguidos por dirección (sección 4.2), las búsquedas web recientes de Safari (8.8), los snapshots de uso de aplicaciones (8.6) y los dispositivos Bluetooth emparejados (8.7). Segundo, incorpora la <strong>retención por caso</strong>: el operador ajusta qué se conserva según el rol del equipo en la causa, en línea con el principio de proporcionalidad (en la 3.6 esa elección pasó a los dos modos de backup y a CAPTA Esencial, ver 4.15). Tercero, habilita el <strong>cotejo con una herramienta independiente</strong> (iLEAPP, de código abierto y uso forense internacional): CAPTA preserva el respaldo en un formato estándar y deja constancia verificable, de modo que lo informado pueda validarse con software de terceros (sección 4.15). Ninguna de estas mejoras cambia la filosofía de no invasión ni el estándar de integridad: cada dato se hashea al momento de la recolección y cada límite se documenta.</p>
     <p>Android e iOS no son, y no buscan ser, plataformas equivalentes en cada capacidad puntual: cada una expone información distinta por sus canales oficiales, y CAPTA documenta esas diferencias en vez de forzar una paridad artificial. Lo que sí es igual en ambas es el estándar de trazabilidad y verificación que sostiene el valor probatorio de la adquisición.</p>
   </div>
 </section>
@@ -735,7 +736,7 @@
   <div class="card">
     <p>CAPTA es un software propietario del Ministerio Público Fiscal de Córdoba. Como ocurre con la gran mayoría del software actual, incorpora también un conjunto de componentes de código abierto de terceros, cada uno bajo su propia licencia.</p>
     <p>El caso más relevante para esta guía es el módulo de conexión con iOS: se apoya en pymobiledevice3, un proyecto de código abierto (licencia GPLv3) ampliamente usado en la comunidad de forensia móvil para hablar los protocolos de diagnóstico y respaldo de Apple. Por las condiciones de esa licencia, CAPTA lo ejecuta como un proceso separado (capta-ios-helper) en lugar de integrarlo directamente en el programa principal. Por eso, al trabajar con un iPhone, es normal ver un proceso auxiliar en ejecución además de CAPTA.</p>
-    <p>Un caso distinto es <strong>iLEAPP</strong> (licencia MIT), la herramienta de código abierto con la que puede cotejarse el respaldo iOS preservado (sección 4.15). Aquí no hay integración ni redistribución: CAPTA no incorpora iLEAPP a su ejecutable ni lo entrega con el kit, solo deja el respaldo en un formato estándar que iLEAPP —u otra herramienta compatible— puede leer por separado. Es interoperabilidad para permitir la validación por terceros, no una dependencia del programa.</p>
+    <p>Un caso distinto es <strong>iLEAPP</strong> (licencia MIT), la herramienta de código abierto con la que puede cotejarse el respaldo iOS preservado (sección 4.15). Aquí no hay integración ni redistribución: CAPTA no incorpora iLEAPP a su ejecutable ni lo entrega con el kit, solo deja el respaldo en un formato estándar que iLEAPP, u otra herramienta compatible, puede leer por separado. Es interoperabilidad para permitir la validación por terceros, no una dependencia del programa.</p>
     <p>El detalle completo de cada componente utilizado, su versión y su licencia está documentado en el archivo de avisos de terceros que se distribuye junto con CAPTA, y se actualiza con cada versión.</p>
   </div>
 </section>
@@ -782,7 +783,7 @@
       <dd>Función matemática que genera un hash criptográfico único de tamaño fijo a partir de un archivo. Cualquier cambio en el archivo, por mínimo que sea, produce un hash completamente distinto, lo que permite verificar que el archivo no fue alterado.</dd>
 
       <dt>iLEAPP (iOS Logs, Events, And Plists Parser)</dt>
-      <dd>Herramienta de análisis forense de artefactos iOS, de código abierto (licencia MIT) y uso extendido en la comunidad forense internacional. Lee respaldos y extracciones de iPhone y parsea sus plists, logs y bases de datos. CAPTA no la integra: preserva el respaldo en un formato que iLEAPP puede leer, para permitir el cotejo de lo informado con una herramienta independiente (sección 4.15).</dd>
+      <dd>Herramienta de análisis forense de artefactos iOS, de código abierto (licencia MIT) y uso extendido en la comunidad forense internacional. Lee respaldos y extracciones de iPhone y parsea sus plists, logs y bases de datos. CAPTA no la integra: el Backup iLEAPP preserva el respaldo en un formato que iLEAPP puede leer, para permitir el cotejo de lo informado con una herramienta independiente (sección 4.15).</dd>
 
       <dt>IMEI</dt>
       <dd>Número identificador único de un equipo con capacidad celular, distinto del número de línea telefónica asociado.</dd>

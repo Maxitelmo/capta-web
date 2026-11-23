@@ -32,7 +32,7 @@
       "@id": "https://maxitelmo.github.io/capta-web/#website",
       "url": "https://maxitelmo.github.io/capta-web/",
       "name": "CAPTA",
-      "description": "Sitio institucional y guías de CAPTA — Colecta Ágil de PEP Técnico Auditable, herramienta de adquisición forense digital móvil del Ministerio Público Fiscal de Córdoba.",
+      "description": "Sitio institucional y guías de CAPTA (Colecta Ágil de PEP Técnico Auditable), herramienta de adquisición forense digital móvil del Ministerio Público Fiscal de Córdoba.",
       "inLanguage": "es-AR",
       "author": { "@id": "https://maxitelmo.github.io/capta-web/#author" },
       "publisher": { "@id": "https://maxitelmo.github.io/capta-web/#author" }
@@ -482,10 +482,10 @@
       <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-contacts"/></svg></span><h3>Contactos, calendario y cuentas</h3><p>Agenda, eventos y cuentas vinculadas. En iOS suma notas, búsquedas de Safari, autocompletado y Bluetooth emparejado.</p></div>
       <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-pin"/></svg></span><h3>Ubicación</h3><p>GPS, Wi-Fi y celdas en Android; en iOS, coordenadas de los metadatos de las fotos.</p></div>
       <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-image"/></svg></span><h3>Fotografías, videos y multimedia</h3><p>Inventario y copia deliberada, con metadatos EXIF y coordenadas GPS.</p></div>
-      <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-cpu"/></svg></span><h3>Detección de imágenes generadas por IA</h3><p>Detecta en los metadatos si una foto fue generada por IA, sin alterar el archivo (Android).</p></div>
+      <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-cpu"/></svg></span><h3>Detección de imágenes generadas por IA</h3><p>Detecta en los metadatos si una foto fue generada por IA y verifica su firma C2PA, sin alterar el archivo (Android e iOS).</p></div>
       <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-layers"/></svg></span><h3>Actividad y apps de interés</h3><p>Uso de permisos, apps recientes y apps de criptoactivos, ocultamiento y bancarias (Android).</p></div>
       <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-users"/></svg></span><h3>Análisis por interlocutor</h3><p>Agrupa toda la comunicación por persona en lugar de un orden cronológico plano.</p></div>
-      <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-shield-check"/></svg></span><h3>Retención proporcional (iOS)</h3><p>Lo que se conserva se ajusta al rol del equipo en la causa: víctima o testigo, o imputado.</p></div>
+      <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-shield-check"/></svg></span><h3>CAPTA Esencial</h3><p>Para víctimas y testigos: menos herramientas a la vista y el mismo rigor de custodia. En iOS, además, el backup conserva solo las categorías elegidas.</p></div>
     </div>
   </section>
 
@@ -520,8 +520,8 @@
       <h2 class="sectitle">Validación independiente en iOS (iLEAPP)</h2>
     </div>
     <div class="card card-accent">
-      <p>En iOS, CAPTA usa el <strong>respaldo lógico estándar de Apple</strong> (el mismo de iTunes/Finder), sin jailbreak. En modo de retención amplio preserva además el respaldo completo con un manifiesto SHA-256, para que lo informado pueda <strong>cotejarse con iLEAPP</strong>, una herramienta forense de código abierto de uso internacional.</p>
-      <div class="note">Alcances de retención, datos que CAPTA aprovecha del respaldo y cómo reproducir el cotejo: <a href="guia.html#s415">guía interactiva, sección 4.15</a>.</div>
+      <p>En iOS, CAPTA usa el <strong>respaldo lógico estándar de Apple</strong> (el mismo de iTunes/Finder), sin jailbreak. Con el <strong>Backup iLEAPP</strong> preserva además el respaldo completo con un manifiesto SHA-256, para que lo informado pueda <strong>cotejarse con iLEAPP</strong>, una herramienta forense de código abierto de uso internacional.</p>
+      <div class="note">Modos de backup, datos que CAPTA aprovecha del respaldo y cómo reproducir el cotejo: <a href="guia.html#s415">guía interactiva, sección 4.15</a>.</div>
     </div>
   </section>
 
@@ -560,15 +560,15 @@
       </details>
       <details>
         <summary>¿Funciona en Android y iOS?<svg class="ic chev"><use href="#i-chevron"/></svg></summary>
-        <div class="answer"><p>Sí. En Android usa la depuración USB (ADB) —<a href="guia_adb.html">cómo activarla</a>— y en iOS el respaldo lógico. El detalle por plataforma está en la <a href="guia.html">guía interactiva</a>.</p></div>
+        <div class="answer"><p>Sí. En Android usa la depuración USB (ADB; <a href="guia_adb.html">cómo activarla</a>) y en iOS el respaldo lógico. El detalle por plataforma está en la <a href="guia.html">guía interactiva</a>.</p></div>
       </details>
       <details>
         <summary>¿CAPTA copia todo el contenido del teléfono?<svg class="ic chev"><use href="#i-chevron"/></svg></summary>
-        <div class="answer"><p>No. La copia de multimedia es siempre una decisión del operador. En iOS, además, el alcance se elige según el rol del equipo en la causa: en modo acotado (víctima o testigo) solo se retienen las categorías seleccionadas; en modo amplio (imputado) se preserva también el respaldo completo.</p></div>
+        <div class="answer"><p>No. La copia de multimedia es siempre una decisión del operador. En iOS, el Backup CAPTA conserva solo las categorías y las fotos elegidas; el respaldo completo se preserva únicamente si se elige el Backup iLEAPP. Para víctimas y testigos está además CAPTA Esencial, con menos herramientas a la vista y el mismo rigor de custodia.</p></div>
       </details>
       <details>
         <summary>¿Se puede validar lo que informa CAPTA con otra herramienta?<svg class="ic chev"><use href="#i-chevron"/></svg></summary>
-        <div class="answer"><p>Sí. En iOS, el respaldo preservado lleva un manifiesto con el hash SHA-256 de cada archivo y puede analizarse con iLEAPP, herramienta forense de código abierto. CAPTA no integra ni redistribuye iLEAPP: deja el respaldo en formato compatible y asienta en el reporte lo necesario para que el cotejo sea reproducible.</p></div>
+        <div class="answer"><p>Sí. En iOS, el Backup iLEAPP preserva el respaldo completo con un manifiesto con el hash SHA-256 de cada archivo, que puede analizarse con iLEAPP, herramienta forense de código abierto. CAPTA no integra ni redistribuye iLEAPP: deja el respaldo en formato compatible y asienta en el reporte lo necesario para que el cotejo sea reproducible.</p></div>
       </details>
     </div>
   </section>
@@ -678,7 +678,7 @@
       "name": "¿CAPTA copia todo el contenido del teléfono?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. La copia de multimedia es siempre una decisión del operador. En iOS, además, el alcance se elige según el rol del equipo en la causa: en modo acotado (víctima o testigo) solo se retienen las categorías seleccionadas; en modo amplio (imputado) se preserva también el respaldo completo."
+        "text": "No. La copia de multimedia es siempre una decisión del operador. En iOS, el Backup CAPTA conserva solo las categorías y las fotos elegidas; el respaldo completo se preserva únicamente si se elige el Backup iLEAPP. Para víctimas y testigos está además CAPTA Esencial, con menos herramientas a la vista y el mismo rigor de custodia."
       }
     },
     {
@@ -686,7 +686,7 @@
       "name": "¿Se puede validar lo que informa CAPTA con otra herramienta?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sí. En iOS, el respaldo preservado lleva un manifiesto con el hash SHA-256 de cada archivo y puede analizarse con iLEAPP, herramienta forense de código abierto. CAPTA no integra ni redistribuye iLEAPP: deja el respaldo en formato compatible y asienta en el reporte lo necesario para que el cotejo sea reproducible."
+        "text": "Sí. En iOS, el Backup iLEAPP preserva el respaldo completo con un manifiesto con el hash SHA-256 de cada archivo, que puede analizarse con iLEAPP, herramienta forense de código abierto. CAPTA no integra ni redistribuye iLEAPP: deja el respaldo en formato compatible y asienta en el reporte lo necesario para que el cotejo sea reproducible."
       }
     }
   ]
