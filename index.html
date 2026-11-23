@@ -477,15 +477,20 @@
     </div>
     <p class="sec-lead">Resumen de las capacidades actuales sobre Android e iOS; el detalle por plataforma está en la <a href="guia.html">guía interactiva</a>.</p>
     <div class="grid">
-      <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-phone"/></svg></span><h3>Identidad del dispositivo</h3><p>Modelo, número de serie, sistema operativo, apps instaladas y marcas temporales con zona horaria.</p></div>
-      <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-chat"/></svg></span><h3>Llamadas, SMS y WhatsApp</h3><p>Registros de comunicación y conversaciones de WhatsApp con adjuntos. En iOS suma reacciones, ediciones, encuestas y acuses de lectura.</p></div>
+      <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-phone"/></svg></span><h3>Identidad del dispositivo</h3><p>Modelo, número de serie, sistema operativo, apps instaladas y marcas temporales con zona horaria. En Android lee el IMEI y la línea de la pantalla del equipo; en iOS, el historial de las SIM que pasaron por el iPhone.</p></div>
+      <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-chat"/></svg></span><h3>Llamadas, SMS y WhatsApp</h3><p>Registros de comunicación y conversaciones de WhatsApp con adjuntos. En iOS suma reacciones, ediciones, encuestas, acuses de lectura y un registro unificado de llamadas del celular y de WhatsApp.</p></div>
+      <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-chat"/></svg></span><h3>Chats por app (Android)</h3><p>Lee en la pantalla del teléfono conversaciones de WhatsApp, Telegram, Instagram, Facebook, Gmail y otras apps, con capturas y grabación. Un asistente guía al operador y la lectura corre sin tocar el equipo.</p></div>
+      <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-hash"/></svg></span><h3>Exportaciones de WhatsApp</h3><p>Importa el ZIP que exporta WhatsApp con su hash, la fecha en que se armó, la identificación de cada participante y aviso de lo que la exportación no conserva.</p></div>
       <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-contacts"/></svg></span><h3>Contactos, calendario y cuentas</h3><p>Agenda, eventos y cuentas vinculadas. En iOS suma notas, búsquedas de Safari, autocompletado y Bluetooth emparejado.</p></div>
       <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-pin"/></svg></span><h3>Ubicación</h3><p>GPS, Wi-Fi y celdas en Android; en iOS, coordenadas de los metadatos de las fotos.</p></div>
       <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-image"/></svg></span><h3>Fotografías, videos y multimedia</h3><p>Inventario y copia deliberada, con metadatos EXIF y coordenadas GPS.</p></div>
       <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-cpu"/></svg></span><h3>Detección de imágenes generadas por IA</h3><p>Detecta en los metadatos si una foto fue generada por IA y verifica su firma C2PA, sin alterar el archivo (Android e iOS).</p></div>
       <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-layers"/></svg></span><h3>Actividad y apps de interés</h3><p>Uso de permisos, apps recientes y apps de criptoactivos, ocultamiento y bancarias (Android).</p></div>
+      <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-layers"/></svg></span><h3>Logs unificados de Apple (iOS)</h3><p>Eventos de telefonía, Wi-Fi, SIM, desbloqueo, AirDrop y cámara en una línea de tiempo, con el detalle crudo.</p></div>
       <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-users"/></svg></span><h3>Análisis por interlocutor</h3><p>Agrupa toda la comunicación por persona en lugar de un orden cronológico plano.</p></div>
       <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-shield-check"/></svg></span><h3>CAPTA Esencial</h3><p>Para víctimas y testigos: menos herramientas a la vista y el mismo rigor de custodia. En iOS, además, el backup conserva solo las categorías elegidas.</p></div>
+      <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-lock"/></svg></span><h3>Material reservado</h3><p>Fotos y videos sensibles que aporta una víctima, elegidos por nombre o fecha sin abrirlos. El reporte los muestra esmerilados y el original se abre solo a pedido.</p></div>
+      <div class="feature-card"><span class="fc-ico"><svg class="ic"><use href="#i-users"/></svg></span><h3>Varios celulares por procedimiento</h3><p>Android e iPhone en un mismo procedimiento, con un acta común por persona y acta ampliatoria. El acta se arma según el tipo de procedimiento: allanamiento o aporte voluntario.</p></div>
     </div>
   </section>
 
@@ -569,6 +574,22 @@
       <details>
         <summary>¿Se puede validar lo que informa CAPTA con otra herramienta?<svg class="ic chev"><use href="#i-chevron"/></svg></summary>
         <div class="answer"><p>Sí. En iOS, el Backup iLEAPP preserva el respaldo completo con un manifiesto con el hash SHA-256 de cada archivo, que puede analizarse con iLEAPP, herramienta forense de código abierto. CAPTA no integra ni redistribuye iLEAPP: deja el respaldo en formato compatible y asienta en el reporte lo necesario para que el cotejo sea reproducible.</p></div>
+      </details>
+      <details>
+        <summary>¿Qué es CAPTA Esencial?<svg class="ic chev"><use href="#i-chevron"/></svg></summary>
+        <div class="answer"><p>Es el modo de CAPTA para relevar el celular de víctimas y testigos: muestra menos herramientas, pensado para personal menos especializado, y mantiene el mismo rigor de custodia (hashes, registro encadenado, política de escrituras al equipo y bloqueo). Se elige en la primera pantalla.</p></div>
+      </details>
+      <details>
+        <summary>¿Puede relevar chats de apps que no permiten exportarlos?<svg class="ic chev"><use href="#i-chevron"/></svg></summary>
+        <div class="answer"><p>Sí, en Android. «Chats por app» lee en la pantalla del teléfono las conversaciones de WhatsApp, Telegram, Instagram, Facebook, Gmail y otras apps, con capturas y grabación. Releva lo que la app muestra; no recupera mensajes borrados ni accede a la base de datos interna de la app.</p></div>
+      </details>
+      <details>
+        <summary>¿Qué pasa con las fotos sensibles que aporta una víctima?<svg class="ic chev"><use href="#i-chevron"/></svg></summary>
+        <div class="answer"><p>Se relevan como Material reservado: se eligen por nombre de archivo o fecha sin abrirlas, se copian con el mismo hash y la misma constancia que el resto, y el reporte las muestra esmeriladas. El original se abre solo a pedido de quien lee el reporte.</p></div>
+      </details>
+      <details>
+        <summary>¿Se pueden relevar varios celulares en un mismo procedimiento?<svg class="ic chev"><use href="#i-chevron"/></svg></summary>
+        <div class="answer"><p>Sí. Cada celular es un relevamiento completo, con su registro, su reporte y su bloqueo, y pueden mezclarse Android e iPhone. Cada persona tiene un acta común con una sección por celular, y si después aparece otro equipo suyo se exporta un acta ampliatoria que cita la original sin modificarla.</p></div>
       </details>
     </div>
   </section>
@@ -687,6 +708,38 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Sí. En iOS, el Backup iLEAPP preserva el respaldo completo con un manifiesto con el hash SHA-256 de cada archivo, que puede analizarse con iLEAPP, herramienta forense de código abierto. CAPTA no integra ni redistribuye iLEAPP: deja el respaldo en formato compatible y asienta en el reporte lo necesario para que el cotejo sea reproducible."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es CAPTA Esencial?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es el modo de CAPTA para relevar el celular de víctimas y testigos: muestra menos herramientas, pensado para personal menos especializado, y mantiene el mismo rigor de custodia (hashes, registro encadenado, política de escrituras al equipo y bloqueo). Se elige en la primera pantalla."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puede relevar chats de apps que no permiten exportarlos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, en Android. «Chats por app» lee en la pantalla del teléfono las conversaciones de WhatsApp, Telegram, Instagram, Facebook, Gmail y otras apps, con capturas y grabación. Releva lo que la app muestra; no recupera mensajes borrados ni accede a la base de datos interna de la app."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué pasa con las fotos sensibles que aporta una víctima?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Se relevan como Material reservado: se eligen por nombre de archivo o fecha sin abrirlas, se copian con el mismo hash y la misma constancia que el resto, y el reporte las muestra esmeriladas. El original se abre solo a pedido de quien lee el reporte."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Se pueden relevar varios celulares en un mismo procedimiento?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Cada celular es un relevamiento completo, con su registro, su reporte y su bloqueo, y pueden mezclarse Android e iPhone. Cada persona tiene un acta común con una sección por celular, y si después aparece otro equipo suyo se exporta un acta ampliatoria que cita la original sin modificarla."
       }
     }
   ]
