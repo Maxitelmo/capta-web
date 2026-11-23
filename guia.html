@@ -815,12 +815,19 @@
     <ul class="plain">
       <li>NIST Special Publication 800-101 Revision 1 (2014), Guidelines on Mobile Device Forensics.</li>
       <li>ISO/IEC 27037:2012, Guidelines for identification, collection, acquisition and preservation of digital evidence.</li>
+      <li>ISO/IEC 27041:2015, Guidance on assuring suitability and adequacy of incident investigative method.</li>
+      <li>ISO/IEC 27042:2015, Guidelines for the analysis and interpretation of digital evidence.</li>
+      <li>ISO/IEC 27043:2015, Incident investigation principles and processes.</li>
       <li>INTERPOL, Guidelines for Digital Forensics First Responders (2021).</li>
-      <li>Documentación oficial de Apple sobre el protocolo de diagnóstico y respaldo de dispositivos (lockdown) y sobre Apple File Conduit (AFC).</li>
+      <li>Documentación oficial de Apple sobre el protocolo de diagnóstico y respaldo de dispositivos (lockdown), sobre Apple File Conduit (AFC) y sobre el registro unificado (Unified Logging).</li>
       <li>Documentación oficial de Android Debug Bridge (ADB), Android Open Source Project.</li>
-      <li>Especificación C2PA (Coalition for Content Provenance and Authenticity) para procedencia de contenido digital.</li>
+      <li>Especificación C2PA (Coalition for Content Provenance and Authenticity) para procedencia de contenido digital, y listas de confianza de su programa de conformidad.</li>
+      <li>IPTC Photo Metadata Standard, vocabulario Digital Source Type (origen digital de una imagen).</li>
+      <li>c2pa-verify, herramienta de verificación de firmas C2PA desarrollada para CAPTA y publicada como software libre (licencia Apache-2.0, PyPI).</li>
       <li>iLEAPP (iOS Logs, Events, And Plists Parser), proyecto de código abierto de análisis forense de artefactos iOS, licencia MIT (github.com/abrignoni/iLEAPP).</li>
       <li>CAPTA_Auditoria_version_iOS, informe interno del equipo de desarrollo de CAPTA, 16 de julio de 2026.</li>
+      <li><em>Low-Intrusion Mobile Forensic Acquisition in the Field: An Operational Approach to Selective Digital Evidence Collection</em>, 55.° JAIIO, SADIO, 2026.</li>
+      <li><em>Selective Logical Acquisition Model for Low-Intrusion Mobile Devices with Integrity and Traceability Guarantees in Field Contexts</em>, 55.° JAIIO, SADIO, 2026.</li>
     </ul>
   </div>
 </section>
@@ -829,32 +836,52 @@
   <h2 class="secttitle">Glosario de términos técnicos</h2>
   <div class="card glossary">
     <dl>
+      <dt>Acta ampliatoria</dt>
+      <dd>Acta que se exporta cuando, después de cerrada el acta de una persona, se releva otro celular suyo. Cita la original (archivo, hora de cierre y SHA-256) sin modificarla y releva solo los celulares nuevos (sección 6).</dd>
+      <dt>Acta de aporte voluntario</dt>
+      <dd>Acta para cuando una persona aporta su celular por su voluntad, por ejemplo en una entrevista. Consigna quién comparece y en qué calidad, el consentimiento informado, el alcance del triaje, las escrituras al equipo y su devolución. No consigna PIN ni patrón (sección 6).</dd>
       <dt>ADB (Android Debug Bridge)</dt>
       <dd>Protocolo oficial de Google para comunicarse con un dispositivo Android desde una computadora con fines de diagnóstico y desarrollo. Requiere que el usuario habilite la depuración USB y autorice explícitamente cada equipo.</dd>
 
       <dt>AFC (Apple File Conduit)</dt>
       <dd>Protocolo oficial de Apple para acceder de forma controlada a determinadas carpetas del dispositivo (por ejemplo, la app Fotos) desde una computadora autorizada.</dd>
+      <dt>Árbol de vistas</dt>
+      <dd>Descripción estructurada de lo que muestra la pantalla de un Android (textos, botones y su posición) que el sistema entrega por ADB. CAPTA la usa para leer el texto de una pantalla sin escribir nada en el equipo (sección 4.14).</dd>
+      <dt>Backup cifrado (contraseña temporal)</dt>
+      <dd>Respaldo del iPhone con el cifrado activado, que incluye datos que el respaldo sin cifrar no trae (historial de Safari, Salud, interacciones del sistema). CAPTA enciende el cifrado con una contraseña temporal y lo apaga al terminar; las dos escrituras quedan en el registro forense (secciones 4.13 y 5).</dd>
 
       <dt>Cadena de custodia</dt>
       <dd>Registro documentado, continuo e ininterrumpido de quién tuvo acceso a una evidencia, cuándo y qué se hizo con ella, necesario para sostener su validez probatoria en sede judicial.</dd>
+      <dt>CAPTA Esencial</dt>
+      <dd>Modo de CAPTA para el celular de víctimas y testigos: menos herramientas a la vista y el mismo rigor de custodia. En el reporte y en el registro forense figura todavía como perfil «Básico» (sección 3.1).</dd>
+      <dt>Chats por app</dt>
+      <dd>Relevamiento de una conversación tal como la app la muestra en la pantalla de un Android, con capturas, lectura del texto y grabación, para chats que no se pueden exportar (sección 4.14).</dd>
 
       <dt>C2PA</dt>
-      <dd>Coalition for Content Provenance and Authenticity: estándar de metadatos que registra el origen y el historial de edición de un contenido digital. Su presencia no implica por sí sola que una imagen sea generada por inteligencia artificial.</dd>
+      <dd>Coalition for Content Provenance and Authenticity: estándar de metadatos que registra el origen y el historial de edición de un contenido digital. Su presencia no implica por sí sola que una imagen sea generada por inteligencia artificial. CAPTA verifica la firma sin conexión con c2pa-verify e informa si es válida con el firmante en la lista de confianza, válida con el firmante fuera de ella, o inválida (sección 4.10).</dd>
+      <dt>eSIM</dt>
+      <dd>SIM integrada en el equipo, que se carga como un perfil descargable en lugar de una tarjeta física. CAPTA la releva junto con las SIM físicas.</dd>
 
       <dt>EXIF</dt>
       <dd>Metadatos incrustados en un archivo de imagen o video (fecha, coordenadas GPS, modelo del dispositivo, entre otros), generados por la cámara o la app al capturar el contenido.</dd>
+      <dt>Exportación de WhatsApp (ZIP)</dt>
+      <dd>Archivo que WhatsApp genera al exportar un chat, con el texto de la conversación y, si se eligió, los adjuntos. Es la vía para relevar WhatsApp en Android: CAPTA calcula su hash y registra la fecha en que se armó (sección 4.2).</dd>
 
       <dt>Extracción lógica</dt>
       <dd>Método de extracción forense que utiliza los canales oficiales del sistema operativo (backup, sincronización, protocolos de diagnóstico) sin requerir acceso privilegiado (root o jailbreak) ni hardware especializado.</dd>
 
       <dt>Hash SHA-256</dt>
       <dd>Función matemática que genera un hash criptográfico único de tamaño fijo a partir de un archivo. Cualquier cambio en el archivo, por mínimo que sea, produce un hash completamente distinto, lo que permite verificar que el archivo no fue alterado.</dd>
+      <dt>ICCID</dt>
+      <dd>Número de serie de una tarjeta SIM. Identifica la tarjeta, no a la persona titular de la línea.</dd>
 
       <dt>iLEAPP (iOS Logs, Events, And Plists Parser)</dt>
       <dd>Herramienta de análisis forense de artefactos iOS, de código abierto (licencia MIT) y uso extendido en la comunidad forense internacional. Lee respaldos y extracciones de iPhone y parsea sus plists, logs y bases de datos. CAPTA no la integra: el Backup iLEAPP preserva el respaldo en un formato que iLEAPP puede leer, para permitir el cotejo de lo informado con una herramienta independiente (sección 4.13).</dd>
 
       <dt>IMEI</dt>
-      <dd>Número identificador único de un equipo con capacidad celular, distinto del número de línea telefónica asociado.</dd>
+      <dd>Número identificador único de un equipo con capacidad celular, distinto del número de línea telefónica asociado. Tiene 15 dígitos y el último es un dígito verificador (algoritmo de Luhn), que CAPTA controla al leerlo de la pantalla con <code>*#06#</code> o al cargarlo a mano (sección 4.1).</dd>
+      <dt>IMSI</dt>
+      <dd>Identificador del abonado en la red del operador, guardado en la SIM. CAPTA lo releva en el historial de SIM del iPhone y lo coteja con la investigación previa.</dd>
 
       <dt>Interlocutor</dt>
       <dd>En el contexto de la sección 4.12, la persona o línea del otro lado de una comunicación (llamada, SMS o WhatsApp), agrupada por CAPTA a partir de los últimos 8 dígitos del número.</dd>
@@ -867,9 +894,15 @@
 
       <dt>Lockdown (protocolo de diagnóstico de Apple)</dt>
       <dd>Mecanismo oficial que Apple utiliza para autenticar una computadora de confianza ante un dispositivo iOS y habilitar operaciones de diagnóstico y respaldo.</dd>
+      <dt>Logs unificados (Apple)</dt>
+      <dd>Registro del sistema que iOS mantiene por un período limitado, con eventos de telefonía, Wi-Fi, SIM, desbloqueo, AirDrop o cámara, entre otros. CAPTA los colecta, cura sus eventos y los muestra en una línea de tiempo (sección 4.8).</dd>
+      <dt>Material reservado</dt>
+      <dd>Fotos o videos sensibles que aporta una víctima o un denunciante, elegidos sin verlos. Se custodian como el resto y el reporte los muestra esmerilados (sección 4.15).</dd>
 
       <dt>RCS (Rich Communication Services)</dt>
       <dd>Estándar de mensajería que sucede al SMS tradicional, gestionado por Google a través de un canal propio (Mensajes de Google / Chat), separado de la base de datos de SMS del sistema.</dd>
+      <dt>Registro forense encadenado</dt>
+      <dd>Log del procedimiento en el que cada entrada incorpora información de la anterior, de modo que cualquier alteración posterior, aunque sea de un carácter, se detecta al recalcular la cadena. CAPTA_Verificador lo comprueba (sección 5).</dd>
 
       <dt>Stalkerware</dt>
       <dd>Software de vigilancia encubierta instalado en un dispositivo, generalmente sin conocimiento de su usuario, para monitorear su actividad.</dd>
